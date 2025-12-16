@@ -32,7 +32,7 @@ const trustItems = [
   {
     icon: Globe,
     title: "Global Reach",
-    description: "Serving buyers in Middle East, Europe, and Asia",
+    description: "Ready to serve buyers across Middle East, Europe, and Asia",
   },
 ];
 
