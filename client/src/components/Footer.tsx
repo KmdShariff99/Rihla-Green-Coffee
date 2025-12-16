@@ -96,10 +96,12 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
+                <Phone className="w-4 h-4 mt-0.5 text-[#25D366] flex-shrink-0" />
                 <a
-                  href={`tel:${companyInfo.phone}`}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-[#25D366] transition-colors"
                   data-testid="link-footer-phone"
                 >
                   {companyInfo.phone}

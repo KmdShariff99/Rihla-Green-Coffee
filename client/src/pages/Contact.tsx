@@ -367,14 +367,16 @@ export default function Contact() {
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <Phone className="w-5 h-5 text-[#25D366] mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="text-sm text-muted-foreground mb-1">
-                          Phone
+                          Phone / WhatsApp
                         </p>
                         <a
-                          href={`tel:${companyInfo.phone}`}
-                          className="text-foreground hover:text-primary transition-colors"
+                          href={whatsappUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-foreground hover:text-[#25D366] transition-colors"
                           data-testid="link-contact-phone"
                         >
                           {companyInfo.phone}
