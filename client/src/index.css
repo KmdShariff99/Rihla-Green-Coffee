@@ -43,7 +43,7 @@
   --chart-3: 25 55% 40%;
   --chart-4: 150 40% 32%;
   --chart-5: 20 50% 38%;
-  --font-sans: Open Sans, sans-serif;
+  --font-sans: Inter, system-ui, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
   --radius: .5rem;
@@ -284,5 +284,20 @@
   .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
+  }
+
+  @keyframes pulse-once {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    }
+  }
+
+  .animate-pulse-once {
+    animation: pulse-once 2s ease-in-out 3;
   }
 }
