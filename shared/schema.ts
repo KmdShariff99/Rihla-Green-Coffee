@@ -408,8 +408,8 @@ export const companyInfo = {
   name: "Rihla Global",
   tagline: "From Bean to Cup",
   email: "exports@rihlaglobal.com",
-  phone: "+91 80 1234 5678",
-  whatsapp: "+919876543210",
+  phone: "+91 9398540256",
+  whatsapp: "+91 9398540256",
   address: "Bangalore, Karnataka, India",
   description: "Rihla Global is an India-based exporter of green coffee beans, working with growers and processors across major coffee-producing regions. We focus on sourcing, grading, and supplying export-ready green coffee beans with transparent specifications and consistent quality."
 };
