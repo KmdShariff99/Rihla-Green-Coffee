@@ -1,0 +1,383 @@
+(For Rihla Global – Indian Green Coffee Exporter)
+
+Project Objective
+
+Create a modern, professional, B2B export website for Rihla Global, an India-based exporter of green coffee beans.
+
+Primary goal:
+Build trust with international coffee buyers and generate qualified export enquiries via contact forms, AI chatbot, and WhatsApp.
+
+The website must be:
+
+SEO-optimized
+
+Mobile-first and responsive
+
+Fact-based (no exaggerated or fake claims)
+
+Aligned with Coffee Board of India (ICB) standards
+
+Suitable for international B2B buyers
+
+Target Audience
+
+International green coffee importers
+
+Coffee roasters and traders
+
+Buyers in the Middle East, Europe, and Asia
+
+B2B buyers seeking reliable Indian suppliers with transparent specifications
+
+Design Theme & Visual Direction
+
+Theme Name:
+Modern Exporter · Origin-Focused · Trust-Driven
+
+Visual Style
+
+Clean, minimal, professional B2B design
+
+Export-focused (not café, not lifestyle, not luxury)
+
+Inspired by Indian coffee plantations and global trade
+
+Color Palette
+
+Deep coffee brown (primary)
+
+Plantation / forest green (secondary)
+
+Warm beige or off-white backgrounds
+
+Charcoal or dark grey text
+
+Typography
+
+Headings: modern sans-serif (Inter, Manrope, or similar)
+
+Body: clean, highly readable sans-serif
+
+No decorative or script fonts
+
+Layout Rules
+
+Clear section hierarchy
+
+Spacious layouts with white space
+
+Grid-based product layouts
+
+Short paragraphs, bullet points preferred
+
+CTAs visible but not aggressive
+
+Imagery Style
+
+Indian coffee plantations
+
+Green coffee beans (raw, realistic)
+
+Subtle export/logistics visuals (bags, containers)
+
+Avoid café interiors, latte art, barista imagery
+
+Homepage Structure
+Hero Section
+
+Full-width layout
+
+Subtle coffee plantation image slider
+
+Dark overlay for text clarity
+
+Headline:
+Indian Green Coffee Beans Exporter
+
+Sub-headline:
+From Bean to Cup
+
+Supporting line:
+Export-grade Indian green coffee beans prepared and graded in compliance with Coffee Board of India standards.
+
+CTAs:
+Request Specifications | Download E-Catalogue | Chat on WhatsApp
+
+Company Introduction
+
+Rihla Global is an India-based exporter of green coffee beans, working with growers and processors across major coffee-producing regions. We focus on sourcing, grading, and supplying export-ready green coffee beans with transparent specifications and consistent quality.
+
+Trust & Compliance Section
+
+Highlight clearly:
+
+Coffee Board of India (ICB) grading compliance
+
+Transparent moisture, screen size, and grade specifications
+
+Export documentation support
+
+Buyer-focused communication
+
+Avoid displaying certification logos unless officially held.
+
+About Us Page
+
+Rihla Global connects Indian green coffee producers with international markets through a reliable and transparent export process.
+
+As a growing exporter, we prioritize consistency, traceability, and clear communication over volume-based claims. We follow Coffee Board of India guidelines and align our practices with internationally accepted trade norms.
+
+Products – Indian Green Coffee Beans
+
+All products are export-grade green coffee beans prepared and graded as per Coffee Board of India (ICB) guidelines. Availability may vary by season and lot. No pricing displayed.
+
+A. Arabica Coffee (Washed – Plantation)
+
+Plantation A
+
+Origin: India
+
+Grade: Plantation A
+
+Moisture: Within ICB prescribed limits
+
+Screen Size: Typically 17+
+
+Technical profile: Large-screen Arabica suitable for premium roasting
+
+Plantation B
+
+Origin: India
+
+Grade: Plantation B
+
+Moisture: Within ICB prescribed limits
+
+Screen Size: Typically 15–16
+
+Technical profile: Stable Arabica for blends and single-origin programs
+
+Plantation C
+
+Origin: India
+
+Grade: Plantation C
+
+Moisture: Within ICB prescribed limits
+
+Screen Size: As per ICB norms
+
+Technical profile: Commercial Arabica with consistent physicals
+
+Plantation Bulk
+
+Origin: India
+
+Grade: Plantation Bulk
+
+Moisture: Within export norms
+
+Screen Size: Mixed, lot-specific
+
+Technical profile: Bulk Arabica supply for volume buyers
+
+CTA for each: Request Quote
+
+B. Robusta Coffee (Washed – Robusta Parchment)
+
+Robusta Plantation PB
+
+Origin: India (Karnataka / Andhra Pradesh)
+
+Grade: Plantation PB
+
+Moisture: As per export standards
+
+Screen Size: PB (Peaberry)
+
+Technical profile: Dense Robusta peaberry with uniform roast behavior
+
+Robusta Plantation AB
+
+Origin: India
+
+Grade: Plantation AB
+
+Moisture: As per export standards
+
+Screen Size: Typically 16+
+
+Technical profile: Clean washed Robusta for espresso and blends
+
+Robusta Plantation C
+
+Origin: India
+
+Grade: Plantation C
+
+Moisture: As per export standards
+
+Screen Size: As per ICB norms
+
+Technical profile: Commercial Robusta for strength-oriented blends
+
+Robusta Plantation Bulk
+
+Origin: India
+
+Grade: Plantation Bulk
+
+Moisture: Within export norms
+
+Screen Size: Mixed, lot-specific
+
+Technical profile: Volume Robusta supply
+
+CTA for each: Request Quote
+
+C. Specialty Coffee
+
+Monsooned Coffee
+
+Origin: India (Malabar Coast)
+
+Processing: Monsooned
+
+Moisture: As per specialty export norms
+
+Technical profile: Low acidity, monsoon-conditioned physical character
+
+Mysore Nuggets EB (Extra Bold)
+
+Origin: Karnataka, India
+
+Grade: Extra Bold Arabica
+
+Moisture: Within ICB limits
+
+Screen Size: 18+
+
+Technical profile: Large, bold Arabica beans with consistent physicals
+
+Robusta Kaapi Royale
+
+Origin: India
+
+Grade: Kaapi Royale
+
+Moisture: As per export standards
+
+Screen Size: Typically 18+
+
+Technical profile: Premium washed Robusta with low defect count
+
+CTA for each: Request Quote
+
+Export Process Page
+
+Explain clearly in steps:
+
+Product selection & specification confirmation
+
+Quality checks and grading (ICB aligned)
+
+Packaging as per buyer requirement
+
+Export documentation
+
+Shipment coordination
+
+AI Chatbot & WhatsApp Integration
+AI Chatbot
+
+Available site-wide
+
+Trained only on website content
+
+Answers:
+
+Company & export capability
+
+Product specs
+
+Export process
+
+Blog topics
+
+Collects enquiry details
+
+Does not provide pricing automatically
+
+WhatsApp Redirect
+
+Floating click-to-chat button (desktop & mobile)
+
+Directs to official Rihla Global WhatsApp
+
+Used for enquiries, specifications, availability
+
+Blog Section
+
+Purpose: buyer-intent SEO and authority building.
+
+Initial Articles:
+
+Understanding Indian Green Coffee Bean Grades
+
+Coffee Board of India Export Standards Explained
+
+Arabica vs Robusta Green Coffee from India
+
+From Bean to Cup: The Journey of Indian Coffee
+
+Each blog must include internal links and a CTA.
+
+E-Catalogue (2 Pages – Print Ready)
+
+Page 1 – Company Overview
+
+Logo
+
+Tagline: From Bean to Cup
+
+Short company introduction
+
+Export focus & ICB compliance
+
+Contact details
+
+Page 2 – Product Overview
+
+Clean, professional product listings
+
+Technical export information
+
+Minimal design suitable for email & WhatsApp sharing
+
+Contact Page
+
+Enquiry form: Name, Company, Country, Requirement
+
+Email clearly visible
+
+WhatsApp click-to-chat
+
+No unnecessary fields
+
+SEO & Technical Requirements
+
+Proper H1–H3 hierarchy
+
+Meta titles & descriptions
+
+Image ALT text
+
+Fast loading
+
+Mobile-first responsive
+
+Structured data for blog and products
+
+Final Output Expected
+
+A professional, export-ready website that looks credible to international coffee buyers, prioritizes trust and clarity, and generates qualified enquiries.
