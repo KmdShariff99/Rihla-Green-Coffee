@@ -124,7 +124,7 @@ export async function registerRoutes(
     res.json(post);
   });
 
-  // E-Catalogue download (simple HTML version for now)
+  // E-Catalogue download (HTML version with logo and tabloid format)
   app.get("/api/catalogue", (_req, res) => {
     const catalogueHtml = `
 <!DOCTYPE html>
@@ -135,40 +135,57 @@ export async function registerRoutes(
   <title>Rihla Global - E-Catalogue</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', system-ui, sans-serif; color: #333; line-height: 1.6; }
-    .page { max-width: 800px; margin: 0 auto; padding: 40px; page-break-after: always; }
-    .header { text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 2px solid #3E2723; }
-    .logo { font-size: 32px; font-weight: bold; color: #3E2723; margin-bottom: 8px; }
-    .tagline { font-size: 18px; color: #666; font-style: italic; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: #333; line-height: 1.6; background: #fff; }
+    .page { max-width: 900px; margin: 0 auto; padding: 40px; page-break-after: always; }
+    .header { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 3px solid #3E2723; }
+    .logo-img { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; }
+    .logo-text { flex: 1; }
+    .logo-name { font-size: 32px; font-weight: bold; color: #3E2723; margin-bottom: 4px; }
+    .tagline { font-size: 16px; color: #2E7D32; font-style: italic; }
     h1 { color: #3E2723; font-size: 28px; margin-bottom: 20px; }
-    h2 { color: #3E2723; font-size: 20px; margin: 30px 0 15px; border-bottom: 1px solid #ddd; padding-bottom: 8px; }
+    h2 { color: #3E2723; font-size: 20px; margin: 30px 0 15px; background: #f5f0eb; padding: 10px 15px; border-left: 4px solid #3E2723; }
     h3 { color: #2E7D32; font-size: 16px; margin: 20px 0 10px; }
     p { margin-bottom: 15px; }
-    .intro { font-size: 16px; color: #555; }
-    .compliance { background: #f5f5f0; padding: 20px; border-radius: 8px; margin: 30px 0; }
+    .intro { font-size: 16px; color: #555; line-height: 1.8; }
+    .compliance { background: linear-gradient(135deg, #f5f0eb 0%, #e8e0d8 100%); padding: 25px; border-radius: 8px; margin: 30px 0; border: 1px solid #d4c8bc; }
     .compliance h3 { margin-top: 0; color: #3E2723; }
-    .contact { margin-top: 30px; }
-    .contact p { margin-bottom: 8px; }
-    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
-    .product { background: #fafafa; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
-    .product h4 { color: #3E2723; margin-bottom: 8px; font-size: 14px; }
-    .product p { font-size: 12px; margin-bottom: 4px; color: #666; }
-    .product strong { color: #333; }
-    .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #888; }
+    .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px; background: #fafafa; border-radius: 6px; border: 1px solid #eee; }
+    .contact-item strong { color: #3E2723; min-width: 80px; }
+    .contact-item span { color: #555; }
+    
+    /* Tabloid Table Styles */
+    .product-table { width: 100%; border-collapse: collapse; margin: 20px 0 30px; font-size: 13px; }
+    .product-table thead { background: #3E2723; color: white; }
+    .product-table th { padding: 12px 10px; text-align: left; font-weight: 600; }
+    .product-table td { padding: 10px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+    .product-table tbody tr:nth-child(even) { background: #f9f7f5; }
+    .product-table tbody tr:hover { background: #f0ebe5; }
+    .product-name { font-weight: 600; color: #3E2723; }
+    .product-profile { font-size: 12px; color: #666; font-style: italic; }
+    
+    .footer { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 2px solid #3E2723; }
+    .footer p { font-size: 12px; color: #666; margin-bottom: 5px; }
+    .footer .company { font-weight: 600; color: #3E2723; }
+    
     @media print {
       .page { padding: 20px; }
-      .product-grid { grid-template-columns: 1fr 1fr; }
+      .product-table { font-size: 11px; }
+      .product-table th, .product-table td { padding: 8px 6px; }
     }
   </style>
 </head>
 <body>
   <div class="page">
     <div class="header">
-      <div class="logo">Rihla Global</div>
-      <div class="tagline">From Bean to Cup</div>
+      <img src="/attached_assets/WhatsApp_Image_2025-11-17_at_21.51.48_1765898801817.jpeg" alt="Rihla Global Logo" class="logo-img" onerror="this.style.display='none'">
+      <div class="logo-text">
+        <div class="logo-name">${companyInfo.name}</div>
+        <div class="tagline">${companyInfo.tagline}</div>
+      </div>
     </div>
     
-    <h1>Indian Green Coffee Beans</h1>
+    <h1>Indian Green Coffee Beans - Export Catalogue</h1>
     
     <p class="intro">
       ${companyInfo.description}
@@ -179,63 +196,119 @@ export async function registerRoutes(
       <p>All products are export-grade green coffee beans prepared and graded as per Coffee Board of India (ICB) guidelines. We provide transparent specifications including moisture content, screen size, and grade details for every lot.</p>
     </div>
     
-    <div class="contact">
-      <h3>Contact Us</h3>
-      <p><strong>Email:</strong> ${companyInfo.email}</p>
-      <p><strong>Phone:</strong> ${companyInfo.phone}</p>
-      <p><strong>WhatsApp:</strong> ${companyInfo.whatsapp}</p>
-      <p><strong>Location:</strong> ${companyInfo.address}</p>
+    <h3>Contact Information</h3>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <strong>Email:</strong>
+        <span>${companyInfo.email}</span>
+      </div>
+      <div class="contact-item">
+        <strong>Phone:</strong>
+        <span>${companyInfo.phone}</span>
+      </div>
+      <div class="contact-item">
+        <strong>WhatsApp:</strong>
+        <span>${companyInfo.whatsapp}</span>
+      </div>
+      <div class="contact-item">
+        <strong>Location:</strong>
+        <span>${companyInfo.address}</span>
+      </div>
     </div>
   </div>
   
   <div class="page">
-    <h1>Product Catalogue</h1>
+    <div class="header">
+      <img src="/attached_assets/WhatsApp_Image_2025-11-17_at_21.51.48_1765898801817.jpeg" alt="Rihla Global Logo" class="logo-img" onerror="this.style.display='none'">
+      <div class="logo-text">
+        <div class="logo-name">${companyInfo.name}</div>
+        <div class="tagline">Product Catalogue</div>
+      </div>
+    </div>
     
     <h2>Arabica Coffee (Washed - Plantation)</h2>
-    <div class="product-grid">
-      ${products.filter(p => p.category === 'arabica').map(p => `
-        <div class="product">
-          <h4>${p.name}</h4>
-          <p><strong>Grade:</strong> ${p.grade}</p>
-          <p><strong>Origin:</strong> ${p.origin}</p>
-          <p><strong>Screen Size:</strong> ${p.screenSize}</p>
-          <p><strong>Moisture:</strong> ${p.moisture}</p>
-          <p>${p.technicalProfile}</p>
-        </div>
-      `).join('')}
-    </div>
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Grade</th>
+          <th>Origin</th>
+          <th>Screen Size</th>
+          <th>Moisture</th>
+          <th>Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${products.filter(p => p.category === 'arabica').map(p => `
+        <tr>
+          <td class="product-name">${p.name}</td>
+          <td>${p.grade}</td>
+          <td>${p.origin}</td>
+          <td>${p.screenSize}</td>
+          <td>${p.moisture}</td>
+          <td class="product-profile">${p.technicalProfile}</td>
+        </tr>
+        `).join('')}
+      </tbody>
+    </table>
     
     <h2>Robusta Coffee (Washed - Robusta Parchment)</h2>
-    <div class="product-grid">
-      ${products.filter(p => p.category === 'robusta').map(p => `
-        <div class="product">
-          <h4>${p.name}</h4>
-          <p><strong>Grade:</strong> ${p.grade}</p>
-          <p><strong>Origin:</strong> ${p.origin}</p>
-          <p><strong>Screen Size:</strong> ${p.screenSize}</p>
-          <p><strong>Moisture:</strong> ${p.moisture}</p>
-          <p>${p.technicalProfile}</p>
-        </div>
-      `).join('')}
-    </div>
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Grade</th>
+          <th>Origin</th>
+          <th>Screen Size</th>
+          <th>Moisture</th>
+          <th>Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${products.filter(p => p.category === 'robusta').map(p => `
+        <tr>
+          <td class="product-name">${p.name}</td>
+          <td>${p.grade}</td>
+          <td>${p.origin}</td>
+          <td>${p.screenSize}</td>
+          <td>${p.moisture}</td>
+          <td class="product-profile">${p.technicalProfile}</td>
+        </tr>
+        `).join('')}
+      </tbody>
+    </table>
     
     <h2>Specialty Coffee</h2>
-    <div class="product-grid">
-      ${products.filter(p => p.category === 'specialty').map(p => `
-        <div class="product">
-          <h4>${p.name}</h4>
-          <p><strong>Grade:</strong> ${p.grade}</p>
-          <p><strong>Origin:</strong> ${p.origin}</p>
-          <p><strong>Screen Size:</strong> ${p.screenSize}</p>
-          <p><strong>Moisture:</strong> ${p.moisture}</p>
-          <p>${p.technicalProfile}</p>
-        </div>
-      `).join('')}
-    </div>
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Grade</th>
+          <th>Origin</th>
+          <th>Screen Size</th>
+          <th>Moisture</th>
+          <th>Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${products.filter(p => p.category === 'specialty').map(p => `
+        <tr>
+          <td class="product-name">${p.name}</td>
+          <td>${p.grade}</td>
+          <td>${p.origin}</td>
+          <td>${p.screenSize}</td>
+          <td>${p.moisture}</td>
+          <td class="product-profile">${p.technicalProfile}</td>
+        </tr>
+        `).join('')}
+      </tbody>
+    </table>
     
     <div class="footer">
-      <p>© ${new Date().getFullYear()} ${companyInfo.name}. All rights reserved.</p>
+      <p class="company">${companyInfo.name}</p>
+      <p>${companyInfo.email} | ${companyInfo.phone} | ${companyInfo.whatsapp}</p>
       <p>Prepared and graded in compliance with Coffee Board of India standards.</p>
+      <p>&copy; ${new Date().getFullYear()} ${companyInfo.name}. All rights reserved.</p>
     </div>
   </div>
 </body>
