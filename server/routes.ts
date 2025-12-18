@@ -4,11 +4,30 @@ import { storage } from "./storage";
 import { enquirySchema, products, blogPosts, companyInfo, exportSteps } from "@shared/schema";
 import OpenAI from "openai";
 
-// This is using Replit's AI Integrations service, which provides OpenAI-compatible API access without requiring your own OpenAI API key.
-const openai = new OpenAI({
-  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
-  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY
-});
+// Support both Replit AI Integrations (preferred) and direct OpenAI API key (for AWS deployment)
+const getOpenAIConfig = () => {
+  // Prefer Replit AI Integrations if available
+  if (process.env.AI_INTEGRATIONS_OPENAI_BASE_URL && process.env.AI_INTEGRATIONS_OPENAI_API_KEY) {
+    return {
+      baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+      apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY
+    };
+  }
+  // Fall back to direct OpenAI API key for external deployments
+  if (process.env.OPENAI_API_KEY) {
+    return {
+      baseURL: "https://api.openai.com/v1",
+      apiKey: process.env.OPENAI_API_KEY
+    };
+  }
+  // No API key configured - chatbot will gracefully fail
+  return {
+    baseURL: "https://api.openai.com/v1",
+    apiKey: "not-configured"
+  };
+};
+
+const openai = new OpenAI(getOpenAIConfig());
 
 const systemPrompt = `You are a helpful AI assistant for Rihla Global, an India-based exporter of green coffee beans. You help international coffee buyers with information about:
 
@@ -103,6 +122,15 @@ export async function registerRoutes(
         response: "I'm having trouble connecting right now. Please try again later or contact us via WhatsApp or email for assistance." 
       });
     }
+  });
+
+  // Health check endpoint for monitoring
+  app.get("/api/health", (_req, res) => {
+    res.json({ 
+      status: "healthy", 
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime()
+    });
   });
 
   // Get products

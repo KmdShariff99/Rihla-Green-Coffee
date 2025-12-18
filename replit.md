@@ -65,5 +65,25 @@ The schema includes product definitions, enquiry validation, blog posts, and com
 
 ### Environment Variables Required
 - `DATABASE_URL`: PostgreSQL connection string
-- `AI_INTEGRATIONS_OPENAI_BASE_URL`: AI service endpoint
-- `AI_INTEGRATIONS_OPENAI_API_KEY`: AI service authentication
+- `AI_INTEGRATIONS_OPENAI_BASE_URL`: AI service endpoint (Replit only)
+- `AI_INTEGRATIONS_OPENAI_API_KEY`: AI service authentication (Replit only)
+- `OPENAI_API_KEY`: Direct OpenAI API key (for AWS/external deployment)
+- `SESSION_SECRET`: Session encryption key
+
+## AWS Deployment
+
+The project includes AWS EC2 deployment configuration files in the `deploy/` directory:
+
+### Deployment Files
+- `ecosystem.config.js`: PM2 process manager configuration (root directory)
+- `deploy/build-production.sh`: Production build script
+- `deploy/nginx.conf`: Nginx reverse proxy configuration template
+- `deploy/.env.example`: Environment variables template
+- `deploy/AWS-DEPLOYMENT-GUIDE.md`: Step-by-step deployment instructions
+
+### Key Features for AWS
+- Health check endpoint at `/api/health` for monitoring
+- PM2 cluster mode for multi-core CPU utilization
+- Nginx configuration with gzip compression and caching
+- SSL/HTTPS support via Let's Encrypt
+- Supports both Replit AI Integrations and direct OpenAI API key
