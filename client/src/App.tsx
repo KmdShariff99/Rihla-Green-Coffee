@@ -6,7 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { ChatBot } from "@/components/ChatBot";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Products from "@/pages/Products";
@@ -42,7 +41,6 @@ function App() {
           </main>
           <Footer />
           <WhatsAppButton />
-          <ChatBot />
         </div>
         <Toaster />
       </TooltipProvider>
