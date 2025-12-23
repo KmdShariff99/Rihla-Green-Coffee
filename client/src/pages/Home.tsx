@@ -86,7 +86,7 @@ export default function Home() {
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
-            <a href="/api/catalogue" target="_blank" rel="noopener noreferrer" data-testid="link-hero-catalogue">
+            <a href="/e-catalogue.html" target="_blank" rel="noopener noreferrer" data-testid="link-hero-catalogue">
               <Button size="lg" variant="outline" className="min-w-[200px] bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20">
                 <Download className="w-4 h-4 mr-2" />
                 Download E-Catalogue
@@ -198,7 +198,7 @@ export default function Home() {
             Download our comprehensive product catalogue or get in touch to discuss your requirements.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="/api/catalogue" target="_blank" rel="noopener noreferrer" data-testid="link-cta-catalogue">
+            <a href="/e-catalogue.html" target="_blank" rel="noopener noreferrer" data-testid="link-cta-catalogue">
               <Button size="lg" variant="secondary" className="min-w-[200px]">
                 <Download className="w-4 h-4 mr-2" />
                 Download E-Catalogue
