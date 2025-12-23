@@ -102,9 +102,11 @@ jobs:
         
       - name: Build
         run: |
-          npx vite build --outDir dist-static
+          npx vite build --outDir dist-static --base /Rihla-Green-Coffee/
           cp client/public/e-catalogue.html dist-static/
           cp client/public/logo.jpeg dist-static/
+          cp dist-static/index.html dist-static/404.html
+          touch dist-static/.nojekyll
           
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
