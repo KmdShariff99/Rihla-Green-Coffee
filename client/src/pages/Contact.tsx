@@ -51,6 +51,8 @@ const countries = [
   "Other",
 ];
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
 export default function Contact() {
   const search = useSearch();
   const { toast } = useToast();
@@ -88,10 +90,22 @@ export default function Contact() {
   const onSubmit = async (data: Enquiry) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch("/api/enquiry", {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: data.name,
+          company: data.company,
+          country: data.country,
+          email: data.email,
+          phone: data.phone || "Not provided",
+          productInterest: data.productInterest || "Not specified",
+          requirement: data.requirement,
+          _subject: `New Enquiry from ${data.name} - ${data.company}`,
+        }),
       });
 
       if (!response.ok) throw new Error("Failed to submit enquiry");
@@ -435,6 +449,7 @@ export default function Contact() {
                   </p>
                 </CardContent>
               </Card>
+
             </div>
           </div>
         </div>

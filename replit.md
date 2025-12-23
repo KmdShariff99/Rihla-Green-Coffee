@@ -70,20 +70,45 @@ The schema includes product definitions, enquiry validation, blog posts, and com
 - `OPENAI_API_KEY`: Direct OpenAI API key (for AWS/external deployment)
 - `SESSION_SECRET`: Session encryption key
 
-## AWS Deployment
+## Deployment Options
 
-The project includes AWS EC2 deployment configuration files in the `deploy/` directory:
+### Option 1: Static Site Deployment (GitHub Pages, Netlify, Vercel)
 
-### Deployment Files
+The project supports static site deployment without a backend server:
+
+**Static Site Features:**
+- No backend server required - Pure HTML/CSS/JS
+- Contact form handled by Formspree (third-party service)
+- E-catalogue as static HTML file (`/e-catalogue.html`)
+- WhatsApp integration works without server
+- AI chatbot removed (requires backend)
+
+**Static Deployment Files:**
+- `deploy/build-static.sh`: Static build script
+- `deploy/STATIC-DEPLOYMENT-GUIDE.md`: Deployment instructions
+- `client/public/e-catalogue.html`: Static product catalogue
+
+**Quick Deploy:**
+```bash
+./deploy/build-static.sh
+# Output: dist-static/ folder ready to deploy
+```
+
+### Option 2: AWS EC2 Deployment (Full-Stack)
+
+The project includes AWS EC2 deployment configuration for full-stack deployment:
+
+**AWS Deployment Files:**
 - `ecosystem.config.js`: PM2 process manager configuration (root directory)
 - `deploy/build-production.sh`: Production build script
 - `deploy/nginx.conf`: Nginx reverse proxy configuration template
 - `deploy/.env.example`: Environment variables template
 - `deploy/AWS-DEPLOYMENT-GUIDE.md`: Step-by-step deployment instructions
 
-### Key Features for AWS
+**Key Features for AWS:**
 - Health check endpoint at `/api/health` for monitoring
 - PM2 cluster mode for multi-core CPU utilization
 - Nginx configuration with gzip compression and caching
 - SSL/HTTPS support via Let's Encrypt
 - Supports both Replit AI Integrations and direct OpenAI API key
+- Full AI chatbot functionality
