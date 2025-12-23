@@ -41,18 +41,16 @@ Run the static build script:
 ./deploy/build-static.sh
 ```
 
-Or manually:
+This script automatically:
+- Builds the site with the correct base path for GitHub Pages (`/Rihla-Green-Coffee/`)
+- Copies static assets (e-catalogue, logo)
+- Creates `404.html` for SPA routing
+- Creates `.nojekyll` file to prevent Jekyll processing
+- Creates `_redirects` for Netlify
 
+**For Netlify/Vercel (root domain):**
 ```bash
-# Install dependencies
-npm install
-
-# Build the static site
-npx vite build --outDir dist-static
-
-# Copy static catalogue and logo
-cp client/public/e-catalogue.html dist-static/
-cp client/public/logo.jpeg dist-static/
+GITHUB_PAGES_BASE="/" ./deploy/build-static.sh
 ```
 
 The build output will be in the `dist-static` folder.
@@ -61,7 +59,7 @@ The build output will be in the `dist-static` folder.
 
 ### Option A: Manual Deployment
 
-1. Create a new GitHub repository
+1. Run the build script: `./deploy/build-static.sh`
 2. Push the contents of `dist-static` to the `gh-pages` branch:
 
 ```bash
@@ -69,12 +67,13 @@ cd dist-static
 git init
 git add .
 git commit -m "Deploy static site"
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git remote add origin https://github.com/KmdShariff99/Rihla-Green-Coffee.git
 git push -u origin main:gh-pages --force
 ```
 
 3. Go to Repository Settings > Pages
 4. Set source to `gh-pages` branch
+5. Your site will be at: https://kmdshairiff99.github.io/Rihla-Green-Coffee/
 
 ### Option B: GitHub Actions (Automated)
 
