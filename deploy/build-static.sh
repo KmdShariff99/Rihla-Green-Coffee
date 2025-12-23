@@ -33,26 +33,29 @@ fi
 echo -e "${YELLOW}Installing dependencies...${NC}"
 npm install
 
-# Build the static site with base path
+# Build the static site with base path (outputs to client/dist-static)
 echo -e "${YELLOW}Building static site...${NC}"
 npx vite build --outDir dist-static --base "${BASE_PATH}"
 
+# Output directory is inside client folder
+OUTPUT_DIR="client/dist-static"
+
 # Copy static assets
 echo -e "${YELLOW}Copying static assets...${NC}"
-cp client/public/e-catalogue.html dist-static/
-cp client/public/logo.jpeg dist-static/
-cp client/public/favicon.png dist-static/ 2>/dev/null || true
+cp client/public/e-catalogue.html "${OUTPUT_DIR}/"
+cp client/public/logo.jpeg "${OUTPUT_DIR}/"
+cp client/public/favicon.png "${OUTPUT_DIR}/" 2>/dev/null || true
 
 # Create 404.html for SPA routing (GitHub Pages)
 echo -e "${YELLOW}Creating 404.html for SPA routing...${NC}"
-cp dist-static/index.html dist-static/404.html
+cp "${OUTPUT_DIR}/index.html" "${OUTPUT_DIR}/404.html"
 
 # Create a simple _redirects file for Netlify
 echo -e "${YELLOW}Creating Netlify redirects...${NC}"
-echo "/*    /index.html   200" > dist-static/_redirects
+echo "/*    /index.html   200" > "${OUTPUT_DIR}/_redirects"
 
 # Create .nojekyll file for GitHub Pages (prevents Jekyll processing)
-touch dist-static/.nojekyll
+touch "${OUTPUT_DIR}/.nojekyll"
 
 # Show build summary
 echo ""
@@ -60,18 +63,18 @@ echo -e "${GREEN}=========================================="
 echo "Build Complete!"
 echo "==========================================${NC}"
 echo ""
-echo "Output directory: dist-static/"
+echo "Output directory: ${OUTPUT_DIR}/"
 echo "Base path: ${BASE_PATH}"
 echo ""
 echo "Contents:"
-ls -la dist-static/
+ls -la "${OUTPUT_DIR}/"
 echo ""
 echo "Next steps:"
 echo "1. Replace YOUR_ACCESS_KEY in Contact.tsx with your Web3Forms access key"
-echo "2. Deploy the dist-static folder to GitHub Pages"
+echo "2. Deploy the ${OUTPUT_DIR} folder to GitHub Pages"
 echo ""
 echo "To deploy to GitHub Pages:"
-echo "  cd dist-static"
+echo "  cd ${OUTPUT_DIR}"
 echo "  git init"
 echo "  git add ."
 echo "  git commit -m 'Deploy'"
