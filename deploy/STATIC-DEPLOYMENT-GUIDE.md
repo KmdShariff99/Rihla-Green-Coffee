@@ -6,7 +6,7 @@ This guide explains how to deploy Rihla Global as a static website on GitHub Pag
 
 The static version of this site:
 - **No backend server required** - Pure HTML/CSS/JS
-- **Forms handled by Formspree** - Third-party form service
+- **Forms handled by Web3Forms** - Free form service (250 submissions/month)
 - **E-catalogue as static HTML** - Print-ready format
 - **WhatsApp integration** - Works without server
 
@@ -14,17 +14,24 @@ The static version of this site:
 
 - Node.js 18+ installed
 - npm or yarn package manager
-- A Formspree account (free tier available)
 
-## Step 1: Configure Formspree
+## Step 1: Configure Web3Forms
 
-1. Go to [Formspree](https://formspree.io) and create a free account
-2. Create a new form and copy your form endpoint (e.g., `https://formspree.io/f/xyzabcde`)
-3. Edit `client/src/pages/Contact.tsx` and replace:
+1. Go to [Web3Forms](https://web3forms.com) 
+2. Enter your email address to get an access key (no signup required)
+3. Check your email for the access key
+4. Edit `client/src/pages/Contact.tsx` and replace:
    ```javascript
-   const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+   const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY";
    ```
-   with your actual Formspree form ID.
+   with your actual Web3Forms access key.
+
+**Web3Forms Free Plan includes:**
+- 250 submissions per month
+- Email notifications
+- Custom redirects
+- Spam protection
+- No branding
 
 ## Step 2: Build the Static Site
 
@@ -112,7 +119,7 @@ jobs:
 1. Create a Netlify account at [netlify.com](https://netlify.com)
 2. Connect your GitHub repository
 3. Set build settings:
-   - **Build command**: `npm run build:static`
+   - **Build command**: `npx vite build --outDir dist-static && cp client/public/e-catalogue.html dist-static/ && cp client/public/logo.jpeg dist-static/`
    - **Publish directory**: `dist-static`
 4. Deploy!
 
@@ -122,7 +129,7 @@ Create `netlify.toml` in your repository root:
 
 ```toml
 [build]
-  command = "npm run build:static"
+  command = "npx vite build --outDir dist-static && cp client/public/e-catalogue.html dist-static/ && cp client/public/logo.jpeg dist-static/"
   publish = "dist-static"
 
 [[redirects]]
@@ -136,7 +143,7 @@ Create `netlify.toml` in your repository root:
 1. Create a Vercel account at [vercel.com](https://vercel.com)
 2. Import your GitHub repository
 3. Set build settings:
-   - **Build Command**: `npm run build:static`
+   - **Build Command**: `npx vite build --outDir dist-static && cp client/public/e-catalogue.html dist-static/ && cp client/public/logo.jpeg dist-static/`
    - **Output Directory**: `dist-static`
 4. Deploy!
 
@@ -186,22 +193,27 @@ Create `vercel.json`:
 2. Add your custom domain
 3. Configure DNS as instructed
 
-## Formspree Alternatives
+## Alternative Form Services
 
-If you prefer other form services:
+If you need more submissions or different features:
+
+### Basin (Unlimited submissions on free plan)
+1. Create account at [usebasin.com](https://usebasin.com)
+2. Get your form endpoint
+3. Update the fetch URL in Contact.tsx
 
 ### Netlify Forms (Free with Netlify hosting)
-Replace the form submit handler with native Netlify Forms:
+If hosted on Netlify, you can use their built-in forms:
 ```html
 <form name="contact" method="POST" data-netlify="true">
   <!-- form fields -->
 </form>
 ```
 
-### Google Forms
-1. Create a Google Form with matching fields
-2. Get the prefilled URL
-3. Use the form action URL in your contact page
+### Getform (50 submissions/month)
+1. Create account at [getform.io](https://getform.io)
+2. Get your form endpoint
+3. Update the fetch URL in Contact.tsx
 
 ## File Structure After Build
 
@@ -217,9 +229,9 @@ dist-static/
 ## Troubleshooting
 
 ### Form not submitting
-- Verify your Formspree endpoint is correct
+- Verify your Web3Forms access key is correct
 - Check browser console for errors
-- Ensure you've replaced `YOUR_FORM_ID` with your actual form ID
+- Ensure you've replaced `YOUR_ACCESS_KEY` with your actual access key
 
 ### Routes not working (404 errors)
 - Ensure you've set up proper redirects for your hosting platform

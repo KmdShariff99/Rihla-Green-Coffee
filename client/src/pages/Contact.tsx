@@ -51,7 +51,8 @@ const countries = [
   "Other",
 ];
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY";
 
 export default function Contact() {
   const search = useSearch();
@@ -90,13 +91,14 @@ export default function Contact() {
   const onSubmit = async (data: Enquiry) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
         body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
           name: data.name,
           company: data.company,
           country: data.country,
@@ -104,11 +106,13 @@ export default function Contact() {
           phone: data.phone || "Not provided",
           productInterest: data.productInterest || "Not specified",
           requirement: data.requirement,
-          _subject: `New Enquiry from ${data.name} - ${data.company}`,
+          subject: `New Enquiry from ${data.name} - ${data.company}`,
+          from_name: "Rihla Global Website",
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to submit enquiry");
+      const result = await response.json();
+      if (!result.success) throw new Error("Failed to submit enquiry");
 
       setIsSubmitted(true);
       toast({
