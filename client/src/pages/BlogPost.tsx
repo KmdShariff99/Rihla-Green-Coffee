@@ -140,7 +140,7 @@ export default function BlogPost() {
 
           <header className="mb-8">
             <div className="flex items-center gap-3 mb-4">
-              <Badge size="sm">{post.category}</Badge>
+              <Badge variant="secondary">{post.category}</Badge>
               <span className="text-xs text-muted-foreground flex items-center gap-1">
                 <Clock className="w-3 h-3" />
                 {post.readTime}

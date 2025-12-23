@@ -51,6 +51,9 @@ const countries = [
   "Other",
 ];
 
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY";
+
 export default function Contact() {
   const search = useSearch();
   const { toast } = useToast();
@@ -88,13 +91,28 @@ export default function Contact() {
   const onSubmit = async (data: Enquiry) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch("/api/enquiry", {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: data.name,
+          company: data.company,
+          country: data.country,
+          email: data.email,
+          phone: data.phone || "Not provided",
+          productInterest: data.productInterest || "Not specified",
+          requirement: data.requirement,
+          subject: `New Enquiry from ${data.name} - ${data.company}`,
+          from_name: "Rihla Global Website",
+        }),
       });
 
-      if (!response.ok) throw new Error("Failed to submit enquiry");
+      const result = await response.json();
+      if (!result.success) throw new Error("Failed to submit enquiry");
 
       setIsSubmitted(true);
       toast({
@@ -435,6 +453,7 @@ export default function Contact() {
                   </p>
                 </CardContent>
               </Card>
+
             </div>
           </div>
         </div>
