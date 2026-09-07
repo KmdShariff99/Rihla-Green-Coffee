@@ -1,0 +1,6 @@
+# robots.txt for https://rihlaglobal.com
+User-agent: *
+Allow: /
+
+# Disallow administrative and private directories
+Disallow: /telemetry/
