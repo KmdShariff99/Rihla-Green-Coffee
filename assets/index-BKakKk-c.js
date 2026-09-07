@@ -327,9 +327,9 @@ Both selective hand-picking and strip harvesting are practiced, depending on gra
 
 India employs several processing methods:
 
-**Washed (Plantation)**: Cherries are pulped, fermented, and washed before drying. This produces the classic Plantation grades.
+**Washed (Plantation)**: Coffee is pulped, fermented, and washed before drying. This produces the classic Plantation grades.
 
-**Natural**: Cherries are dried whole, creating fruit-forward flavors.
+**Natural**: Coffee is dried whole, creating fruit-forward flavors.
 
 **Monsooning**: A unique Indian process where beans are exposed to monsoon winds for several months, creating the distinctive Monsooned Malabar character.
 
