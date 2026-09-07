@@ -38,6 +38,16 @@
     .product-name { font-weight: 600; color: #3E2723; }
     .product-profile { font-size: 12px; color: #666; font-style: italic; }
     
+    .certifications { margin-top: 34px; }
+    .certification-intro { color: #555; margin-bottom: 18px; }
+    .certificate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .certificate-card { display: flex; flex-direction: column; justify-content: space-between; gap: 14px; padding: 18px; background: #fafafa; border: 1px solid #e4ddd6; border-radius: 8px; }
+    .certificate-card h3 { margin: 0; color: #3E2723; font-size: 17px; }
+    .certificate-card p { margin: 0; color: #666; font-size: 13px; }
+    .certificate-meta { display: grid; gap: 5px; }
+    .certificate-meta strong { color: #3E2723; }
+    .certificate-link { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 9px 12px; color: #fff; background: #3E2723; border-radius: 5px; font-weight: 600; text-decoration: none; }
+    .certificate-link:hover, .certificate-link:focus-visible { background: #2E7D32; }
     .footer { text-align: center; margin-top: 40px; padding-top: 25px; border-top: 2px solid #3E2723; }
     .footer p { font-size: 12px; color: #666; margin-bottom: 5px; }
     .footer .company { font-weight: 600; color: #3E2723; }
@@ -55,6 +65,8 @@
       .contact-item strong { min-width: 72px; }
       .product-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; font-size: 12px; }
       .product-table th, .product-table td { padding: 9px 8px; }
+      .certificate-grid { grid-template-columns: 1fr; }
+      .certificate-card { padding: 16px; }
       .footer { margin-top: 28px; }
     }
 
@@ -252,6 +264,37 @@
       </tbody>
     </table>
     
+    <section class="certifications" aria-labelledby="certifications-title">
+      <h2 id="certifications-title">Certifications &amp; Registrations</h2>
+      <p class="certification-intro">Rihla Global Exports maintains the registrations required to operate as an Indian coffee exporter. View the official documents below.</p>
+      <div class="certificate-grid">
+        <article class="certificate-card">
+          <div class="certificate-meta">
+            <h3>GST Registration Certificate</h3>
+            <p><strong>GSTIN:</strong> 29KMSPS9159C1ZY</p>
+            <p>Issued by the Government of India. Regular registration.</p>
+          </div>
+          <a class="certificate-link" href="certificates/gst-certificate-rihla.pdf" target="_blank" rel="noopener noreferrer">View GST certificate</a>
+        </article>
+        <article class="certificate-card">
+          <div class="certificate-meta">
+            <h3>Coffee Board RCMC</h3>
+            <p><strong>Exporter code:</strong> 3116</p>
+            <p>Registered merchant exporter; valid through 31 March 2030.</p>
+          </div>
+          <a class="certificate-link" href="certificates/coffee-board-rcmc-rihla.pdf" target="_blank" rel="noopener noreferrer">View RCMC certificate</a>
+        </article>
+        <article class="certificate-card">
+          <div class="certificate-meta">
+            <h3>Importer-Exporter Code</h3>
+            <p><strong>IEC:</strong> KMSPS9159C</p>
+            <p>Issued by DGFT on 18 January 2025.</p>
+          </div>
+          <a class="certificate-link" href="certificates/iec-rihla.pdf" target="_blank" rel="noopener noreferrer">View IEC certificate</a>
+        </article>
+      </div>
+    </section>
+
     <div class="footer">
       <p class="company">Rihla Global</p>
       <p><a href="mailto:exports@rihlaglobal.com">exports@rihlaglobal.com</a> | <a href="tel:+919398540256">+91 9398540256</a></p>
