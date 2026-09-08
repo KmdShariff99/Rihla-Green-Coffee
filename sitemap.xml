@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rihlaglobal.com/</loc>
+    <loc>https://www.rihlaglobal.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://rihlaglobal.com/e-catalogue.html</loc>
+    <loc>https://www.rihlaglobal.com/e-catalogue.html</loc>
   </url>
-  <url><loc>https://rihlaglobal.com/trust/</loc></url>
-  <url><loc>https://rihlaglobal.com/certifications/index.html</loc></url>
-  <url><loc>https://rihlaglobal.com/enquire/</loc></url>
-  <url><loc>https://rihlaglobal.com/products/arabica/</loc></url>
-  <url><loc>https://rihlaglobal.com/products/robusta/</loc></url>
-  <url><loc>https://rihlaglobal.com/products/specialty/</loc></url>
+  <url><loc>https://www.rihlaglobal.com/trust/</loc></url>
+  <url><loc>https://www.rihlaglobal.com/certifications/index.html</loc></url>
+  <url><loc>https://www.rihlaglobal.com/enquire/</loc></url>
+  <url><loc>https://www.rihlaglobal.com/products/arabica/</loc></url>
+  <url><loc>https://www.rihlaglobal.com/products/robusta/</loc></url>
+  <url><loc>https://www.rihlaglobal.com/products/specialty/</loc></url>
 </urlset>
