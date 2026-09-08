@@ -52,7 +52,20 @@
     <script type="application/ld+json">
       [{"@context":"https://schema.org","@type":"Organization","name":"Rihla Global","url":"https://www.rihlaglobal.com/","email":"mailto:exports@rihlaglobal.com","telephone":"+919398540256","address":{"@type":"PostalAddress","addressLocality":"Bangalore","addressRegion":"Karnataka","addressCountry":"IN"},"description":"Indian exporter of premium green Arabica, Robusta, and specialty coffee beans."},{"@context":"https://schema.org","@type":"WebSite","name":"Rihla Global","url":"https://www.rihlaglobal.com/","description":"Premium Indian green coffee beans for international B2B buyers."}]
     </script>
+    <style>
+      #contact form.contact-enhanced { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; text-align:left; }
+      #contact form.contact-enhanced .contact-field { display:flex; flex-direction:column; gap:.4rem; }
+      #contact form.contact-enhanced .contact-field.full { grid-column:1/-1; }
+      #contact form.contact-enhanced label { font-size:.82rem; font-weight:600; color:var(--foreground,#2f241f); }
+      #contact form.contact-enhanced input, #contact form.contact-enhanced select, #contact form.contact-enhanced textarea { width:100%; border:1px solid var(--border,#d8cec5); border-radius:.6rem; padding:.75rem .85rem; background:var(--background,#fff); color:var(--foreground,#2f241f); font:inherit; }
+      #contact form.contact-enhanced textarea { min-height:7rem; resize:vertical; }
+      #contact form.contact-enhanced .contact-note { grid-column:1/-1; margin:0; color:var(--muted-foreground,#6f625b); font-size:.85rem; }
+      @media (max-width:640px){#contact form.contact-enhanced{grid-template-columns:1fr}#contact form.contact-enhanced .contact-field.full,#contact form.contact-enhanced .contact-note{grid-column:auto}}
+    </style>
     <script type="module" crossorigin src="/assets/index-BKakKk-c.js?v=certifications-menu-2"></script>
+    <script>
+      (()=>{const enhance=()=>{const root=document.querySelector('#contact');const form=root?.querySelector('form');if(!form||form.dataset.enhanced)return;form.dataset.enhanced='true';form.classList.add('contact-enhanced');const fields=[['product','Product interest','select',[['Arabica','Arabica'],['Robusta','Robusta'],['Specialty coffee','Specialty coffee']]],['quantity','Quantity required (kg)','input'],['destination','Destination country','input'],['packaging','Packaging preference','select',[['60 kg jute bags','60 kg jute bags'],['GrainPro liner','GrainPro liner'],['Hermetic liner','Hermetic liner']]],['company','Company name','input'],['buyer-email','Business email','input']];const message=form.querySelector('textarea');fields.forEach(([id,label,type,options])=>{const wrap=document.createElement('div');wrap.className='contact-field';const el=document.createElement(type==='select'?'select':'input');el.id=id;el.name=id;el.required=true;if(type==='input')el.type=id==='buyer-email'?'email':'text';const lab=document.createElement('label');lab.htmlFor=id;lab.textContent=label;wrap.append(lab,el);if(options)options.forEach(([text,value])=>{const option=document.createElement('option');option.textContent=text;option.value=value;el.append(option)});form.insertBefore(wrap,message?.parentElement||form.lastElementChild)});if(message){message.closest('div')?.classList.add('contact-field','full');message.required=true;message.placeholder='Tell us your coffee requirements, timeline, and specifications';}const note=document.createElement('p');note.className='contact-note';note.textContent='Minimum order: 500 kg. Standard packing: 60 kg jute bags. GrainPro or hermetic liners available on request.';form.insertBefore(note,form.lastElementChild)};const observer=new MutationObserver(enhance);observer.observe(document.body,{childList:true,subtree:true});enhance();setTimeout(()=>observer.disconnect(),10000)})();
+    </script>
     <link rel="stylesheet" crossorigin href="/assets/index-B_vtTfaK.css">
   </head>
   <body>
