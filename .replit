@@ -1,7 +1,11 @@
-modules = ["web"]
+modules = ["web", "nodejs-20"]
 
 [nix]
 channel = "stable-25_05"
 
 [agent]
 expertMode = true
+
+[postMerge]
+path = "scripts/post-merge.sh"
+timeoutMs = 180000
