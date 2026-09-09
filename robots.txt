@@ -5,4 +5,7 @@ Allow: /
 # Disallow administrative and private directories
 Disallow: /telemetry/
 
-Sitemap: https://rihlaglobal.com/sitemap.xml
+Sitemap: https://www.rihlaglobal.com/sitemap.xml
+
+# AI-readable site summary
+# https://www.rihlaglobal.com/llms.txt
