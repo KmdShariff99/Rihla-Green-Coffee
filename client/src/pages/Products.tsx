@@ -7,8 +7,8 @@ import { products, type ProductCategory } from "@shared/schema";
 
 const categories: { value: ProductCategory | "all"; label: string; note: string }[] = [
   { value: "all", label: "All coffees", note: "The complete current catalogue" },
-  { value: "arabica", label: "Arabica", note: "Washed Plantation grades" },
-  { value: "robusta", label: "Robusta", note: "Plantation and blend grades" },
+  { value: "arabica", label: "Arabica", note: "Washed Plantation and unwashed Arabica Cherry grades" },
+  { value: "robusta", label: "Robusta", note: "Washed Plantation and unwashed Robusta Cherry grades" },
   { value: "specialty", label: "Specialty", note: "Distinctive Indian lots" },
 ];
 
