@@ -6,11 +6,12 @@ import { companyInfo } from "@shared/schema";
 import logoImage from "@assets/WhatsApp_Image_2025-11-17_at_21.51.48_1765898801817.jpeg";
 
 const navLinks = [
-  { href: "/products", label: "Coffees" },
-  { href: "/about", label: "Our approach" },
-  { href: "/export-process", label: "Export process" },
-  { href: "/blog", label: "Insights" },
-  { href: "/contact", label: "Contact" },
+  { href: "/products", label: "Coffees", external: false },
+  { href: "/about", label: "Our approach", external: false },
+  { href: "/export-process", label: "Export process", external: false },
+  { href: "/certifications/", label: "Certifications", external: true },
+  { href: "/blog", label: "Insights", external: false },
+  { href: "/contact", label: "Contact", external: false },
 ];
 
 export function Header() {
@@ -30,7 +31,7 @@ export function Header() {
           <span className={`font-serif text-xl tracking-tight ${isScrolled ? "text-foreground" : "text-white"}`}>Rihla <span className="text-accent">Global</span></span>
         </Link>
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
-          {navLinks.map((link) => <Link key={link.href} href={link.href} className={`rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.12em] transition-colors ${location === link.href ? (isScrolled ? "bg-primary text-primary-foreground" : "bg-white/15 text-white") : (isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white")}`} data-testid={`link-nav-${link.label.toLowerCase().replaceAll(" ", "-")}`}>{link.label}</Link>)}
+          {navLinks.map((link) => link.external ? <a key={link.href} href={link.href} className={`rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.12em] transition-colors ${isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"}`} data-testid={`link-nav-${link.label.toLowerCase().replaceAll(" ", "-")}`}>{link.label}</a> : <Link key={link.href} href={link.href} className={`rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.12em] transition-colors ${location === link.href ? (isScrolled ? "bg-primary text-primary-foreground" : "bg-white/15 text-white") : (isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white")}`} data-testid={`link-nav-${link.label.toLowerCase().replaceAll(" ", "-")}`}>{link.label}</Link>)}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] ${isScrolled ? "text-primary" : "text-white"}`}><MessageCircle className="size-4" /> WhatsApp</a>
@@ -38,7 +39,7 @@ export function Header() {
         </div>
         <button className={`rounded-full p-2 lg:hidden ${isScrolled ? "text-foreground" : "text-white"}`} aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
       </div>
-      {open && <div className="border-t border-border bg-background px-5 py-6 shadow-xl lg:hidden"><nav className="flex flex-col gap-2" aria-label="Mobile navigation">{navLinks.map((link) => <Link key={link.href} href={link.href} className="rounded-md px-3 py-3 font-serif text-2xl text-foreground hover:bg-muted">{link.label}</Link>)}<a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-4"><Button className="w-full rounded-full">Chat on WhatsApp <MessageCircle data-icon="inline-end" /></Button></a></nav></div>}
+      {open && <div className="border-t border-border bg-background px-5 py-6 shadow-xl lg:hidden"><nav className="flex flex-col gap-2" aria-label="Mobile navigation">{navLinks.map((link) => link.external ? <a key={link.href} href={link.href} className="rounded-md px-3 py-3 font-serif text-2xl text-foreground hover:bg-muted">{link.label}</a> : <Link key={link.href} href={link.href} className="rounded-md px-3 py-3 font-serif text-2xl text-foreground hover:bg-muted">{link.label}</Link>)}<a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-4"><Button className="w-full rounded-full">Chat on WhatsApp <MessageCircle data-icon="inline-end" /></Button></a></nav></div>}
     </header>
   );
 }
