@@ -43,10 +43,14 @@
   .display-title { @apply font-serif text-balance text-4xl leading-[1.05] tracking-[-0.03em] sm:text-5xl lg:text-7xl; }
   .glass-panel { background: hsl(var(--background) / .82); backdrop-filter: blur(18px); border: 1px solid hsl(var(--primary) / .16); }
   .image-frame { @apply overflow-hidden; }
-  .image-frame img { @apply h-full w-full object-cover transition-transform duration-700; }
-  .image-frame:hover img { transform: scale(1.04); }
+  .image-frame img { @apply h-full w-full object-cover; }
+  .image-frame:hover img { transform: scale(1.02); transition: transform .5s ease-out; }
   .hairline { @apply border-t border-primary/15; }
 }
+
+@keyframes reveal-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+[data-testid="section-hero"] > .relative.z-10 { animation: reveal-up .8s ease-out both; }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
 
