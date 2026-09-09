@@ -1,0 +1,65 @@
+Context:
+- This website works correctly at:
+  https://kmdshariff99.github.io/Rihla-Green-Coffee/
+- The same site shows a blank page at:
+  https://www.rihlaglobal.com
+- The project is a static HTML/CSS/JS website hosted on GitHub Pages with a custom domain.
+- This is a professional green coffee export website for Rihla Global (India-based exporter).
+
+PRIMARY TASK — DOMAIN ISSUE:
+1. Identify ALL reasons why the site loads on the *.github.io URL but shows blank on the custom domain.
+2. Inspect and fix:
+   - index.html naming and root placement
+   - <base href> issues
+   - relative vs absolute paths for CSS, JS, images
+   - hardcoded GitHub Pages URLs
+   - case-sensitive file mismatches
+   - missing or incorrect CNAME file
+   - DNS configuration for:
+     - www.rihlaglobal.com
+     - rihlaglobal.com
+   - GitHub Pages IP records
+   - HTTPS / SSL / mixed content errors
+3. Ensure the site loads perfectly on BOTH:
+   - https://kmdshariff99.github.io/Rihla-Green-Coffee/
+   - https://www.rihlaglobal.com
+4. Ensure there are ZERO console errors.
+
+SECONDARY TASK — SCROLL BEHAVIOR:
+- Modify navigation and section links so that:
+  - Every time a menu item or section link is clicked,
+  - The page scrolls back to the TOP before loading that section.
+- This must work for:
+  - Anchor links
+  - Navbar clicks
+  - Mobile navigation
+- Use clean, lightweight JavaScript (no frameworks unless already present).
+
+FORM TASK — WEB3FORMS INTEGRATION:
+- Integrate Web3Forms into the contact form using this access key:
+  65b5079c-6714-457e-97b9-94e8c5df3a66
+- Ensure:
+  - Proper form validation
+  - Spam-safe structure
+  - No exposed secrets beyond the required key
+- After successful form submission:
+  - Automatically redirect the user back to the HOME page (top of the site)
+  - Do NOT show a blank thank-you page
+
+DELIVERABLES:
+- Corrected HTML, CSS, and JS (only where required)
+- Clean, domain-agnostic asset paths
+- Web3Forms-ready contact form code
+- Scroll-to-top JavaScript logic
+- DNS + CNAME configuration summary
+- Final deployment checklist
+
+IMPORTANT CONSTRAINTS:
+- Keep the site static (no backend)
+- Do NOT remove SEO meta tags
+- Do NOT bloat with unnecessary libraries
+- Optimize for international coffee buyers and importers
+- Maintain professional, export-industry tone
+
+GOAL:
+Make the Rihla Global website fully production-ready, reliable on both domains, and polished for global green coffee trade.
