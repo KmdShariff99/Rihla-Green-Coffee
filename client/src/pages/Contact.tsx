@@ -134,26 +134,22 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="py-12 md:py-16 bg-background" data-testid="section-contact-header">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4" data-testid="text-contact-headline">
-            Contact Us
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl">
-            Ready to source Indian green coffee? Get in touch with our team to discuss your requirements.
-          </p>
+      <section className="bg-primary py-20 text-primary-foreground lg:py-28" data-testid="section-contact-header">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <p className="eyebrow text-accent">The buyer desk</p>
+          <h1 className="display-title mt-5 max-w-3xl" data-testid="text-contact-headline">Let&apos;s discuss the lot your programme needs.</h1>
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-primary-foreground/70">Share your product interest, quantity, destination, and requirements. We&apos;ll respond with the next useful detail.</p>
         </div>
       </section>
 
-      <section className="py-12 md:py-16 bg-card" data-testid="section-contact-form">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <Card>
-                <CardContent className="p-6 md:p-8">
-                  <h2 className="text-xl font-semibold text-foreground mb-6">
-                    Send an Enquiry
-                  </h2>
+      <section className="bg-background py-16 lg:py-24" data-testid="section-contact-form">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.3fr_.7fr] lg:gap-16">
+            <div>
+              <div className="mb-8"><p className="eyebrow">Start with the essentials</p><h2 className="mt-3 font-serif text-4xl">Send a specification request.</h2><p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">Minimum order is 500 kg. Standard packing is 60 kg jute bags; GrainPro or hermetic liners are available on request.</p></div>
+              <Card className="border-primary/15 shadow-xl shadow-primary/5">
+                <CardContent className="p-6 md:p-9">
+                  <h2 className="sr-only">Send an enquiry</h2>
                   <Form {...form}>
                     <form
                       onSubmit={form.handleSubmit(onSubmit)}
@@ -335,12 +331,12 @@ export default function Contact() {
               </Card>
             </div>
 
-            <div className="space-y-6">
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-foreground mb-4">
-                    Contact Information
-                  </h3>
+            <div className="flex flex-col gap-6">
+              <Card className="border-primary/15 bg-primary text-primary-foreground">
+                <CardContent className="p-7">
+                  <p className="eyebrow text-accent">Direct line</p>
+                  <h3 className="mt-3 font-serif text-3xl">A real person for the next question.</h3>
+                  <p className="mt-4 text-sm leading-6 text-primary-foreground/65">Prefer a faster first conversation? Use WhatsApp and include the same details from this form.</p>
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <Mail className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />

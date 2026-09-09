@@ -1,124 +1,22 @@
-import { useState, useEffect } from "react";
-import { useLocation, useSearch } from "wouter";
+import { Link } from "wouter";
+import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/ProductCard";
 import { products, type ProductCategory } from "@shared/schema";
-
 import beansImage from "@assets/stock_images/green_coffee_beans_r_0332a1f5.jpg";
 
-const categories: { value: ProductCategory | "all"; label: string }[] = [
-  { value: "all", label: "All Products" },
-  { value: "arabica", label: "Arabica" },
-  { value: "robusta", label: "Robusta" },
-  { value: "specialty", label: "Specialty" },
+const categories: { value: ProductCategory | "all"; label: string; note: string }[] = [
+  { value: "all", label: "All coffees", note: "The complete current catalogue" },
+  { value: "arabica", label: "Arabica", note: "Washed Plantation grades" },
+  { value: "robusta", label: "Robusta", note: "Plantation and blend grades" },
+  { value: "specialty", label: "Specialty", note: "Distinctive Indian lots" },
 ];
 
 export default function Products() {
-  const search = useSearch();
-  const [, setLocation] = useLocation();
-  const params = new URLSearchParams(search);
-  const categoryParam = params.get("category") as ProductCategory | null;
-  
-  const [activeCategory, setActiveCategory] = useState<ProductCategory | "all">(
-    categoryParam && ["arabica", "robusta", "specialty"].includes(categoryParam)
-      ? categoryParam
-      : "all"
-  );
-
-  useEffect(() => {
-    if (categoryParam && ["arabica", "robusta", "specialty"].includes(categoryParam)) {
-      setActiveCategory(categoryParam);
-    }
-  }, [categoryParam]);
-
-  const filteredProducts =
-    activeCategory === "all"
-      ? products
-      : products.filter((p) => p.category === activeCategory);
-
-  const handleCategoryChange = (category: ProductCategory | "all") => {
-    setActiveCategory(category);
-    if (category === "all") {
-      setLocation("/products");
-    } else {
-      setLocation(`/products?category=${category}`);
-    }
-  };
-
-  const getCategoryDescription = () => {
-    switch (activeCategory) {
-      case "arabica":
-        return "Washed Arabica coffee (Plantation grades) from the highlands of Karnataka, Kerala, and Tamil Nadu.";
-      case "robusta":
-        return "Washed Robusta coffee (Plantation grades) from Karnataka and Andhra Pradesh.";
-      case "specialty":
-        return "Premium specialty coffees including Monsooned Malabar, Mysore Nuggets EB, and Kaapi Royale.";
-      default:
-        return "Export-grade Indian green coffee beans prepared and graded as per Coffee Board of India (ICB) guidelines.";
-    }
-  };
-
-  return (
-    <div className="min-h-screen pt-20">
-      <section className="relative py-20 md:py-28 overflow-hidden" data-testid="section-products-hero">
-        <div className="absolute inset-0">
-          <img
-            src={beansImage}
-            alt="Green coffee beans"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6" data-testid="text-products-headline">
-              Indian Green Coffee Beans
-            </h1>
-            <p className="text-lg text-white/90 leading-relaxed">
-              {getCategoryDescription()}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-20 lg:py-24 bg-background" data-testid="section-products-list">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-2 mb-12">
-            {categories.map((category) => (
-              <Button
-                key={category.value}
-                variant={activeCategory === category.value ? "default" : "outline"}
-                onClick={() => handleCategoryChange(category.value)}
-                data-testid={`button-category-${category.value}`}
-              >
-                {category.label}
-              </Button>
-            ))}
-          </div>
-
-          <div className="mb-8">
-            <p className="text-sm text-muted-foreground">
-              Showing {filteredProducts.length} product{filteredProducts.length !== 1 ? "s" : ""}
-              {activeCategory !== "all" && ` in ${activeCategory}`}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-
-          <div className="mt-16 p-6 bg-card rounded-lg border border-border">
-            <h3 className="font-semibold text-foreground mb-3">
-              Product Availability Notice
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              All products are export-grade green coffee beans prepared and graded as per Coffee Board of India (ICB) guidelines. Availability may vary by season and lot. No pricing is displayed publicly—please contact us for current availability and specifications.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  const query = new URLSearchParams(window.location.search);
+  const requested = query.get("category") as ProductCategory | null;
+  const active = ["arabica", "robusta", "specialty"].includes(requested || "") ? requested! : "all";
+  const filtered = active === "all" ? products : products.filter((product) => product.category === active);
+  const current = categories.find((category) => category.value === active) || categories[0];
+  return <div className="pt-20"><section className="relative overflow-hidden bg-primary py-20 text-white lg:py-28" data-testid="section-products-hero"><img src={beansImage} alt="Indian green coffee beans" className="absolute inset-0 size-full object-cover opacity-35" /><div className="absolute inset-0 bg-primary/70" /><div className="relative mx-auto max-w-7xl px-5 lg:px-8"><p className="eyebrow text-accent">The coffee catalogue</p><h1 className="display-title mt-5 max-w-3xl">Indian coffees with a clear physical story.</h1><p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">Browse the current Arabica, Robusta, and specialty grades. Availability remains lot-specific; ask for the latest specification before ordering.</p></div></section><section className="bg-background py-16 lg:py-24" data-testid="section-products-list"><div className="mx-auto max-w-7xl px-5 lg:px-8"><div className="flex flex-wrap gap-2 border-b border-primary/15 pb-8">{categories.map((category) => <Link key={category.value} href={category.value === "all" ? "/products" : `/products?category=${category.value}`}><Button variant={active === category.value ? "default" : "outline"} className="rounded-full">{category.label}</Button></Link>)}</div><div className="flex flex-col gap-3 py-8 sm:flex-row sm:items-end sm:justify-between"><div><p className="eyebrow">{current.note}</p><h2 className="mt-2 font-serif text-3xl">{current.label}</h2></div><p className="text-sm text-muted-foreground">{filtered.length} current {filtered.length === 1 ? "grade" : "grades"}</p></div><div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{filtered.map((product) => <ProductCard key={product.id} product={product} />)}</div><div className="mt-16 grid gap-6 border-t border-primary/15 pt-8 md:grid-cols-3"><div><p className="eyebrow">Commercial terms</p><p className="mt-3 font-serif text-xl">500 kg minimum order</p></div><div><p className="eyebrow">Standard packing</p><p className="mt-3 font-serif text-xl">60 kg jute bags</p></div><div><p className="eyebrow">On request</p><p className="mt-3 font-serif text-xl">GrainPro or hermetic liners</p></div></div><div className="mt-16 flex flex-col gap-5 bg-primary p-7 text-primary-foreground sm:flex-row sm:items-center sm:justify-between"><div><p className="font-serif text-2xl">Need a full overview?</p><p className="mt-2 text-sm text-primary-foreground/65">Download the current catalogue for grades and specifications.</p></div><a href="/e-catalogue.html" target="_blank" rel="noopener noreferrer"><Button variant="secondary" className="rounded-full"><Download data-icon="inline-start" /> Download catalogue <ArrowRight data-icon="inline-end" /></Button></a></div></div></section></div>;
 }
