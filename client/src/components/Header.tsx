@@ -19,7 +19,9 @@ export function Header() {
   const [location] = useLocation();
   useEffect(() => { const onScroll = () => setIsScrolled(window.scrollY > 24); window.addEventListener("scroll", onScroll); return () => window.removeEventListener("scroll", onScroll); }, []);
   useEffect(() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }, [location]);
-  const whatsappUrl = `https://wa.me/${companyInfo.whatsapp.replace(/\+/g, "")}?text=${encodeURIComponent("Hello Rihla Global, I would like a green coffee quote.\nProduct:\nQuantity (kg):\nDestination country:\nPackaging preference:\nCompany:\nBusiness email:\nAdditional requirements:")}`;
+  const whatsappNumber = companyInfo.whatsapp.replace(/\D/g, "");
+  const whatsappMessage = "Hello Rihla Global, I would like a green coffee quote.\nProduct:\nQuantity (kg):\nDestination country:\nPackaging preference:\nCompany:\nBusiness email:\nAdditional requirements:";
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${isScrolled ? "border-b border-primary/10 bg-background/90 shadow-sm backdrop-blur-xl" : "bg-transparent"}`}>
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">

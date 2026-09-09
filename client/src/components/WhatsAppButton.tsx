@@ -2,7 +2,9 @@ import { MessageCircle } from "lucide-react";
 import { companyInfo } from "@shared/schema";
 
 export function WhatsAppButton() {
-  const whatsappUrl = `https://wa.me/${companyInfo.whatsapp.replace(/\+/g, "")}?text=Hello, I'm interested in your green coffee products.`;
+  const whatsappNumber = companyInfo.whatsapp.replace(/\D/g, "");
+  const whatsappMessage = "Hello Rihla Global, I would like a green coffee quote.\nProduct:\nQuantity (kg):\nDestination country:\nPackaging preference:\nCompany:\nBusiness email:\nAdditional requirements:";
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <a

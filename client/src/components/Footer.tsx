@@ -4,7 +4,8 @@ import { companyInfo } from "@shared/schema";
 import logoImage from "@assets/WhatsApp_Image_2025-11-17_at_21.51.48_1765898801817.jpeg";
 
 export function Footer() {
-  const whatsappUrl = `https://wa.me/${companyInfo.whatsapp.replace(/\+/g, "")}`;
+  const whatsappNumber = companyInfo.whatsapp.replace(/\D/g, "");
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}`;
   return <footer className="bg-primary text-primary-foreground" data-testid="footer">
     <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-20">
       <div className="grid gap-12 lg:grid-cols-[1.4fr_.8fr_.8fr_1fr]">

@@ -88,7 +88,7 @@ export default function Contact() {
 
   const whatsappNumber = companyInfo.whatsapp.replace(/\D/g, "");
   const whatsappMessage = "Hello Rihla Global, I would like a green coffee quote.\nProduct:\nQuantity (kg):\nDestination country:\nPackaging preference:\nCompany:\nBusiness email:\nAdditional requirements:";
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
 
   const onSubmit = async (data: Enquiry) => {
     setIsSubmitting(true);
