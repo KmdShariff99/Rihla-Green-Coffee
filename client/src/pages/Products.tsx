@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/ProductCard";
@@ -12,7 +12,8 @@ const categories: { value: ProductCategory | "all"; label: string; note: string 
 ];
 
 export default function Products() {
-  const query = new URLSearchParams(window.location.search);
+  const [location] = useLocation();
+  const query = new URLSearchParams(location.split("?")[1] || "");
   const requested = query.get("category") as ProductCategory | null;
   const active = ["arabica", "robusta", "specialty"].includes(requested || "") ? requested! : "all";
   const filtered = active === "all" ? products : products.filter((product) => product.category === active);
