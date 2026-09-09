@@ -21,7 +21,9 @@ const categoryContent = [
 ];
 
 export default function Home() {
-  const whatsappUrl = `https://wa.me/${companyInfo.whatsapp.replace(/\+/g, "")}?text=${encodeURIComponent("Hello Rihla Global, I would like a green coffee quote.\nProduct:\nQuantity (kg):\nDestination country:\nPackaging preference:\nCompany:\nBusiness email:\nAdditional requirements:")}`;
+  const whatsappNumber = companyInfo.whatsapp.replace(/\D/g, "");
+  const whatsappMessage = "Hello Rihla Global, I would like a green coffee quote.\nProduct:\nQuantity (kg):\nDestination country:\nPackaging preference:\nCompany:\nBusiness email:\nAdditional requirements:";
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
   return <div className="overflow-hidden">
     <section className="relative flex min-h-[min(860px,100vh)] items-end bg-primary" data-testid="section-hero">
       <img src={plantationImage} alt="Coffee plantation in India" className="absolute inset-0 size-full object-cover" fetchPriority="high" />
