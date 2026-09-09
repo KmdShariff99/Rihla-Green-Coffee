@@ -150,6 +150,74 @@ export const products: Product[] = [
     technicalProfile: "Volume Robusta supply",
     slug: "robusta-plantation-bulk"
   },
+  // Unwashed Arabica — Arabica Cherry
+  {
+    id: "arabica-cherry-pb",
+    name: "Arabica Cherry PB",
+    category: "arabica",
+    origin: "India",
+    grade: "Arabica Cherry PB",
+    moisture: "Within ICB prescribed limits",
+    screenSize: "PB (Peaberry)",
+    technicalProfile: "Natural Arabica peaberry with fruit-forward cup potential",
+    slug: "arabica-cherry-pb"
+  },
+  {
+    id: "arabica-cherry-ab",
+    name: "Arabica Cherry AB",
+    category: "arabica",
+    origin: "India",
+    grade: "Arabica Cherry AB",
+    moisture: "Within ICB prescribed limits",
+    screenSize: "Typically 15+",
+    technicalProfile: "Natural Arabica for balanced roasting and blend programs",
+    slug: "arabica-cherry-ab"
+  },
+  {
+    id: "arabica-cherry-c",
+    name: "Arabica Cherry C",
+    category: "arabica",
+    origin: "India",
+    grade: "Arabica Cherry C",
+    moisture: "Within ICB prescribed limits",
+    screenSize: "As per ICB norms",
+    technicalProfile: "Commercial natural Arabica with consistent physicals",
+    slug: "arabica-cherry-c"
+  },
+  // Unwashed Robusta — Robusta Cherry
+  {
+    id: "robusta-cherry-pb",
+    name: "Robusta Cherry PB",
+    category: "robusta",
+    origin: "India",
+    grade: "Robusta Cherry PB",
+    moisture: "As per export standards",
+    screenSize: "PB (Peaberry)",
+    technicalProfile: "Natural Robusta peaberry with dense body and strong roast performance",
+    slug: "robusta-cherry-pb"
+  },
+  {
+    id: "robusta-cherry-ab",
+    name: "Robusta Cherry AB",
+    category: "robusta",
+    origin: "India",
+    grade: "Robusta Cherry AB",
+    moisture: "As per export standards",
+    screenSize: "Typically 16+",
+    technicalProfile: "Natural Robusta for espresso, blends, and commercial programs",
+    slug: "robusta-cherry-ab"
+  },
+  {
+    id: "robusta-cherry-c",
+    name: "Robusta Cherry C",
+    category: "robusta",
+    origin: "India",
+    grade: "Robusta Cherry C",
+    moisture: "As per export standards",
+    screenSize: "As per ICB norms",
+    technicalProfile: "Commercial natural Robusta with dependable physicals",
+    slug: "robusta-cherry-c"
+  },
   // Specialty Coffee
   {
     id: "specialty-monsooned",
