@@ -16,8 +16,6 @@ const BlogPost = lazy(() => import("@/pages/BlogPost"));
 const Contact = lazy(() => import("@/pages/Contact"));
 import NotFound from "@/pages/not-found";
 
-const basePath = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "") || "/";
-
 function AppRouter() {
   return (
     <Suspense fallback={<div className="min-h-[60vh] bg-background" aria-label="Loading page" />}>
@@ -39,7 +37,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Router base={basePath}>
+        <Router>
           <div className="min-h-screen flex flex-col bg-background">
             <Header />
             <main className="flex-1">
