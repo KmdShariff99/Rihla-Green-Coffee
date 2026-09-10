@@ -1,3 +1,5 @@
+"use client";
+
 import { lazy, Suspense } from "react";
 import { Switch, Route, Router } from "wouter";
 import { queryClient } from "./lib/queryClient";
