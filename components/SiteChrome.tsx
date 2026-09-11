@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const links = [["/about","About"],["/products","Products"],["/insights","Insights"],["/certifications","Certifications"],["/contact","Contact"]];
 
@@ -25,14 +25,4 @@ export function Footer() {
     </div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} Rihla Global</span><Link href="/certifications">Registered export credentials</Link></div>
   </footer>;
-}
-
-export function RevealObserver() {
-  useEffect(()=>{
-    document.documentElement.classList.add("js");
-    const items=document.querySelectorAll(".reveal");
-    const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in-view");io.unobserve(e.target)}}),{threshold:.12});
-    items.forEach(x=>io.observe(x)); return()=>io.disconnect();
-  },[]);
-  return null;
 }

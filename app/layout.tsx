@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import Script from "next/script";
-import { Footer, Header, RevealObserver } from "@/components/SiteChrome";
+import { Footer, Header } from "@/components/SiteChrome";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
@@ -11,6 +11,6 @@ export const metadata:Metadata={metadataBase:new URL("https://www.rihlaglobal.co
 
 export default function RootLayout({children}:{children:React.ReactNode}){
  const ga=process.env.NEXT_PUBLIC_GA_ID;
- return <html lang="en" className={`${inter.variable} ${fraunces.variable}`}><body><a className="skip-link" href="#main">Skip to content</a><Header/>{children}<Footer/><RevealObserver/><OrganizationJsonLd/><div className="grain" aria-hidden="true"/>
+ return <html lang="en" className={`${inter.variable} ${fraunces.variable}`}><body><a className="skip-link" href="#main">Skip to content</a><Header/>{children}<Footer/><OrganizationJsonLd/><div className="grain" aria-hidden="true"/>
  {process.env.NODE_ENV==="production"&&ga&&<><Script src={`https://www.googletagmanager.com/gtag/js?id=${ga}`} strategy="afterInteractive"/><Script id="ga" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${ga}')`}</Script></>}</body></html>
 }

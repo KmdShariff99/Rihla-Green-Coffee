@@ -53,3 +53,8 @@
    being left hidden after the initial observer has mounted. */
 .js .reveal,
 .js .reveal.in-view{opacity:1;transform:none}
+
+/* Permanent visibility guarantee for every route and navigation state. */
+.reveal,
+.js .reveal,
+.js .reveal.in-view{opacity:1!important;transform:none!important}

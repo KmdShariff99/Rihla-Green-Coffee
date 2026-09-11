@@ -1,0 +1,1 @@
+- [Route content visibility](route-content-visibility.md) — keep content visible without JavaScript; one-time reveal observers can miss client-navigated elements.
