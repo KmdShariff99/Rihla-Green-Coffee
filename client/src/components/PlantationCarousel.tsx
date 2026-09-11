@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 const slides = [
-  { src: "/images/coffee-cherries.jpg", alt: "Ripe and green coffee cherries growing on a plantation branch", label: "The cherry stage" },
-  { src: "/images/coffee-plantation.jpg", alt: "Coffee plantation landscape in India", label: "Indian origin" },
-  { src: "/images/green-coffee-beans.jpg", alt: "Green coffee beans prepared for export", label: "Export-ready green coffee" },
+  { src: "https://www.rihlaglobal.com/images/coffee-cherries.jpg", alt: "Ripe and green coffee cherries growing on a plantation branch", label: "The cherry stage" },
+  { src: "https://www.rihlaglobal.com/images/coffee-plantation.jpg", alt: "Coffee plantation landscape in India", label: "Indian origin" },
+  { src: "https://www.rihlaglobal.com/images/green-coffee-beans.jpg", alt: "Green coffee beans prepared for export", label: "Export-ready green coffee" },
 ];
 
 export function PlantationCarousel() {

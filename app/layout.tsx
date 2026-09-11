@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   openGraph: { type: "website", url: "https://www.rihlaglobal.com/", siteName: "Rihla Global", title: "Rihla Global | Indian Green Coffee Exporter", description: "Traceable Indian green coffee, prepared for international buyers." },
   twitter: { card: "summary_large_image", title: "Rihla Global | Indian Green Coffee Exporter", description: "Traceable Indian green coffee, prepared for international buyers." },
+  icons: { icon: "https://www.rihlaglobal.com/favicon.png" },
 };
 
 export const viewport: Viewport = { themeColor: "#102f24", colorScheme: "light", width: "device-width", initialScale: 1 };

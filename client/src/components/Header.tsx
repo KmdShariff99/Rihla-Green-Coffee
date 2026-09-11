@@ -26,7 +26,7 @@ export function Header() {
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${isScrolled ? "border-b border-primary/10 bg-background/90 shadow-sm backdrop-blur-xl" : "bg-transparent"}`}>
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
         <Link href="/" className="group flex items-center gap-3" data-testid="link-home-logo">
-          <img src="/logo.jpeg" alt="Rihla Global" width="48" height="48" className="size-11 rounded-full object-cover ring-1 ring-accent/60" />
+          <img src="https://www.rihlaglobal.com/logo.jpeg" alt="Rihla Global" width="48" height="48" className="size-11 rounded-full object-cover ring-1 ring-accent/60" />
           <span className={`font-serif text-xl tracking-tight ${isScrolled ? "text-foreground" : "text-white"}`}>Rihla <span className="text-accent">Global</span></span>
         </Link>
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">

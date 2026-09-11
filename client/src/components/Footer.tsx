@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Mail, MapPin, MessageCircle, ArrowUpRight } from "lucide-react";
 import { companyInfo } from "@shared/schema";
-import logoImage from "@assets/WhatsApp_Image_2025-11-17_at_21.51.48_1765898801817.jpeg";
+const logoImage = "https://www.rihlaglobal.com/logo.jpeg";
 
 export function Footer() {
   const whatsappNumber = companyInfo.whatsapp.replace(/\D/g, "");
