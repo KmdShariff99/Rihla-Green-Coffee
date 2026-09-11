@@ -3,6 +3,15 @@ import test from "node:test";
 
 import { allProducts, categories } from "../lib/products";
 
+const requiredSpecificationFields = [
+  "family",
+  "preparation",
+  "origin",
+  "moisture",
+  "screen",
+  "tolerance",
+] as const;
+
 const expectedGradeNames = [
   "Plantation PB",
   "Plantation A",
@@ -76,6 +85,20 @@ test("official grade category totals remain unchanged", () => {
     specialty: 8,
     miscellaneous: 2,
   });
+});
+
+test("every grade has complete required specifications", () => {
+  const incompleteFields = allProducts.flatMap(product =>
+    requiredSpecificationFields
+      .filter(field => product[field].trim().length === 0)
+      .map(field => `${product.name}.${field}`),
+  );
+
+  assert.deepEqual(
+    incompleteFields,
+    [],
+    `fill in required grade specifications: ${incompleteFields.join(", ")}`,
+  );
 });
 
 test("grade specifications do not contain vague placeholder wording", () => {
