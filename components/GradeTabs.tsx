@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Category, fields } from "@/lib/products";
+import { Category, fields, officialGradeSource } from "@/lib/products";
 
 export function GradeTabs({category}:{category:Category}) {
   const [active,setActive]=useState(0);
@@ -15,5 +15,10 @@ export function GradeTabs({category}:{category:Category}) {
         <a className="text-link" href={`/contact?product=${encodeURIComponent(g.name)}`}>Request this specification <span>↗</span></a>
       </article>)}
     </div>
+    <aside className="grade-basis">
+      <p className="kicker">Basis of specification</p>
+      <p>Values shown are published Coffee Board designation limits, not a claim of continuous stock. Any offer separately confirms the actual lot, crop reference, agreed physical specification, packing, quantity, shipment terms, and pre-shipment sample. The contract specification and approved sample govern supply.</p>
+      <a className="text-link" href={officialGradeSource.url} target="_blank" rel="noopener noreferrer">Read the Coffee Board source guide ↗</a>
+    </aside>
   </div>;
 }

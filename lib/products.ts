@@ -1,100 +1,163 @@
+export type CoffeeCategory = "arabica" | "robusta" | "specialty" | "miscellaneous";
+
 export type Grade = {
-  name: string; origin: string; moisture: string; screen: string;
-  tolerance: string; packaging: string;
-};
-
-export type Category = {
-  slug: "arabica" | "robusta" | "specialty";
-  title: string; eyebrow: string; description: string; seo: string; grades: Grade[];
-};
-
-export type CatalogueProduct = {
   name: string;
-  category: "arabica" | "robusta" | "specialty";
+  family: string;
   preparation: string;
   origin: string;
   moisture: string;
   screen: string;
+  tolerance: string;
   profile?: string;
-  tolerance?: string;
-  packaging?: string;
-  source: "detailed" | "legacy";
 };
 
-const westernGhats = "Western Ghats, India (Chikkamagalur/Kodagu)";
+export type Category = {
+  slug: CoffeeCategory;
+  title: string;
+  eyebrow: string;
+  description: string;
+  seo: string;
+  grades: Grade[];
+};
+
+export type CatalogueProduct = Grade & {
+  category: CoffeeCategory;
+};
+
+const plantationMoisture = "10.5%; +0.5 percentage-point tolerance permitted";
+const cherryMoisture = "11.5%; +0.5 percentage-point tolerance permitted";
+const specialtyMoisture = "9.0–10.5%; +0.5 percentage-point tolerance permitted";
+const monsoonMoisture = "13.0–14.5%; +0.5 percentage-point tolerance permitted";
+const noSeparateMoisture = "No separate moisture figure stated for this miscellaneous grade";
+
+function grade(
+  name: string,
+  family: string,
+  preparation: string,
+  moisture: string,
+  screen: string,
+  tolerance: string,
+  origin = "India",
+): Grade {
+  return { name, family, preparation, origin, moisture, screen, tolerance };
+}
+
+const plantation = [
+  grade("Plantation PB", "Commercial · Plantation", "Washed Arabica", plantationMoisture, "No sieve requirement", "Clean garbled; flats (AB) maximum 2%; PB triage maximum 3% by weight"),
+  grade("Plantation A", "Commercial · Plantation", "Washed Arabica", plantationMoisture, "Minimum 90% retained on 6.65 mm (Screen 17); maximum 1.5% passes 6.00 mm (Screen 15)", "Clean garbled; PB maximum 2%; triage maximum 2% by weight"),
+  grade("Plantation B", "Commercial · Plantation", "Washed Arabica", plantationMoisture, "Minimum 75% retained on 6.00 mm (Screen 15); maximum 1.5% passes 5.50 mm (Screen 14)", "Clean garbled; PB maximum 2%; triage maximum 3% by weight"),
+  grade("Plantation C", "Commercial · Plantation", "Washed Arabica", plantationMoisture, "Minimum 75% retained on 5.50 mm (Screen 14); 100% stands on 5.00 mm (Screen 13)", "May include triage, small whole beans of the prescribed sieve size, light beans, boat-shaped beans and spotted beans with less than one-quarter surface affected; free from black and damaged beans"),
+  grade("Plantation Blacks", "Commercial · Plantation", "Washed Arabica", plantationMoisture, "100% retained on 5.00 mm (Screen 13)", "May include beans with more than one-quarter surface black, deep blue or dark brown; bleached/spongy, insect-damaged, heavily spotted, stinker and sour beans"),
+  grade("Plantation Bits", "Commercial · Plantation", "Washed Arabica", plantationMoisture, "100% passes 5.00 mm (Screen 13)", "Ungarbled; may contain broken beans below one-third bean size and, at the prescribed size, black/brown, bleached/spongy, insect-damaged, heavily spotted, stinker and sour beans"),
+  grade("Plantation Bulk", "Commercial · Plantation", "Washed Arabica", plantationMoisture, "Ungraded", "Blacks, browns and bits combined: maximum 2% by weight"),
+  grade("Plantation AA", "Premium · Plantation", "Washed Arabica", plantationMoisture, "Minimum 90% retained on 7.10 mm (Screen 18); 100% stands on 6.65 mm (Screen 17); the 10% between these sieves must be whole beans", "Clean garbled; PB maximum 2% by weight; no separate triage allowance stated"),
+  grade("Plantation PB Bold", "Premium · Plantation", "Washed Arabica", plantationMoisture, "100% retained on 4.75 mm oblong sieve (Screen 12 oblong)", "Clean garbled; AB maximum 2%; PB triage maximum 2% by weight"),
+];
+
+const arabicaCherry = [
+  grade("Arabica Cherry PB", "Commercial · Arabica Cherry", "Natural Arabica", cherryMoisture, "No sieve requirement", "Clean garbled; flats (AB) maximum 2%; PB triage maximum 3% by weight"),
+  grade("Arabica Cherry AB", "Commercial · Arabica Cherry", "Natural Arabica", cherryMoisture, "Minimum 90% retained on 6.00 mm (Screen 15); maximum 1.5% passes 5.50 mm (Screen 14)", "Clean garbled; PB maximum 2%; triage maximum 3% by weight"),
+  grade("Arabica Cherry C", "Commercial · Arabica Cherry", "Natural Arabica", cherryMoisture, "Minimum 75% retained on 5.50 mm (Screen 14); 100% stands on 5.00 mm (Screen 13)", "May include triage, small whole beans of the prescribed sieve size, light beans, boat-shaped beans and spotted beans with less than one-quarter surface affected; blacks, browns or bits combined maximum 2%"),
+  grade("Arabica Cherry Blacks/Browns", "Commercial · Arabica Cherry", "Natural Arabica", cherryMoisture, "100% retained on 5.00 mm (Screen 13)", "May include black/dark-brown, bleached/spongy, insect-damaged, heavily spotted, fungal-damaged, sour and green beans"),
+  grade("Arabica Cherry Bits", "Commercial · Arabica Cherry", "Natural Arabica", cherryMoisture, "100% passes 5.00 mm (Screen 13)", "Ungarbled; may contain broken beans below one-third bean size and, at the prescribed size, black/dark-brown, bleached/spongy, insect-damaged, heavily spotted, fungal-damaged, sour and green beans"),
+  grade("Arabica Cherry Bulk", "Commercial · Arabica Cherry", "Natural Arabica", cherryMoisture, "Ungraded", "Blacks, browns and bits combined: maximum 10% by weight"),
+  grade("Arabica Cherry AA", "Premium · Arabica Cherry", "Natural Arabica", cherryMoisture, "Minimum 90% retained on 7.10 mm (Screen 18); 100% retained on 6.65 mm (Screen 17)", "Clean garbled; PB maximum 2%; triage maximum 1% by weight"),
+  grade("Arabica Cherry A", "Premium · Arabica Cherry", "Natural Arabica", cherryMoisture, "Minimum 90% retained on 6.65 mm (Screen 17); 100% stands on 6.00 mm (Screen 15)", "Clean garbled; PB maximum 2%; triage maximum 2% by weight"),
+  grade("Arabica Cherry PB Bold", "Premium · Arabica Cherry", "Natural Arabica", cherryMoisture, "100% retained on 4.75 mm oblong sieve (Screen 12 oblong)", "Clean garbled; AB maximum 2%; PB triage maximum 2% by weight"),
+];
+
+const robustaParchment = [
+  grade("Robusta Parchment PB", "Commercial · Robusta Parchment", "Washed Robusta", plantationMoisture, "No sieve requirement", "Clean garbled; flats (AB) maximum 2%; PB triage maximum 3% by weight"),
+  grade("Robusta Parchment AB", "Commercial · Robusta Parchment", "Washed Robusta", plantationMoisture, "Minimum 90% retained on 6.00 mm (Screen 15); maximum 1.5% passes 5.50 mm (Screen 14)", "Clean garbled; PB maximum 2%; triage maximum 3% by weight"),
+  grade("Robusta Parchment C", "Commercial · Robusta Parchment", "Washed Robusta", plantationMoisture, "Minimum 75% retained on 5.50 mm (Screen 14); 100% retained on 5.00 mm (Screen 13)", "May include triage, small whole beans of the prescribed sieve size, light beans, boat-shaped beans and spotted beans with less than one-quarter surface affected; blacks, browns or bits combined maximum 2%"),
+  grade("Robusta Parchment Blacks/Browns", "Commercial · Robusta Parchment", "Washed Robusta", plantationMoisture, "100% retained on 5.00 mm (Screen 13)", "May include black/dark-brown, bleached/spongy, insect-damaged, heavily spotted, stinker and sour beans"),
+  grade("Robusta Parchment Bits", "Commercial · Robusta Parchment", "Washed Robusta", plantationMoisture, "100% passes 5.00 mm (Screen 13)", "Ungarbled; may contain broken beans below one-third bean size and, at the prescribed size, black/dark-brown, bleached/spongy, insect-damaged, heavily spotted, stinker and sour beans"),
+  grade("Robusta Parchment Bulk", "Commercial · Robusta Parchment", "Washed Robusta", plantationMoisture, "Ungraded", "Blacks, browns and bits combined: maximum 2% by weight"),
+  grade("Robusta Parchment A", "Premium · Robusta Parchment", "Washed Robusta", plantationMoisture, "Minimum 90% retained on 6.65 mm (Screen 17); 100% stands on 6.00 mm (Screen 15)", "Clean garbled; PB maximum 2%; no triage tolerance"),
+  grade("Robusta Parchment PB Bold", "Premium · Robusta Parchment", "Washed Robusta", plantationMoisture, "100% retained on 4.50 mm oblong sieve (Screen 11 oblong)", "Clean garbled; AB maximum 2%; triage maximum 2% by weight"),
+];
+
+const robustaCherry = [
+  grade("Robusta Cherry PB", "Commercial · Robusta Cherry", "Natural Robusta", cherryMoisture, "No sieve requirement", "Clean garbled; flats (AB) maximum 2%; PB triage maximum 3% by weight"),
+  grade("Robusta Cherry AB", "Commercial · Robusta Cherry", "Natural Robusta", cherryMoisture, "Minimum 90% retained on 6.00 mm (Screen 15); maximum 1.5% passes 5.50 mm (Screen 14)", "Clean garbled; PB maximum 2%; triage maximum 3% by weight"),
+  grade("Robusta Cherry C", "Commercial · Robusta Cherry", "Natural Robusta", cherryMoisture, "Minimum 75% retained on 5.50 mm (Screen 14); 100% stands on 5.00 mm (Screen 13)", "May include triage, small whole beans of the prescribed sieve size, light beans, boat-shaped beans and spotted beans with less than one-quarter surface affected; blacks, browns or bits combined maximum 2%"),
+  grade("Robusta Cherry Blacks/Browns", "Commercial · Robusta Cherry", "Natural Robusta", cherryMoisture, "100% retained on 5.00 mm (Screen 13)", "May include black/dark-brown, bleached/spongy, insect-damaged, heavily spotted, fungal-damaged, sour and green beans"),
+  grade("Robusta Cherry Bits", "Commercial · Robusta Cherry", "Natural Robusta", cherryMoisture, "100% passes 5.00 mm (Screen 13)", "Ungarbled; may contain broken beans below one-third bean size and, at the prescribed size, black/dark-brown, bleached/spongy, insect-damaged, heavily spotted, fungal-damaged, sour and green beans"),
+  grade("Robusta Cherry Bulk", "Commercial · Robusta Cherry", "Natural Robusta", cherryMoisture, "Ungraded", "Blacks, browns and bits combined: maximum 10% by weight"),
+  grade("Robusta Cherry Clean/Bulk", "Commercial · Robusta Cherry", "Natural Robusta", cherryMoisture, "Ungraded", "Free from blacks, browns and bits"),
+  grade("Robusta Cherry AA", "Premium · Robusta Cherry", "Natural Robusta", cherryMoisture, "Minimum 90% retained on 7.10 mm (Screen 18); 100% retained on 6.65 mm (Screen 17)", "Clean garbled; PB maximum 2%; triage maximum 1% by weight"),
+  grade("Robusta Cherry A", "Premium · Robusta Cherry", "Natural Robusta", cherryMoisture, "Minimum 90% retained on 6.65 mm (Screen 17); 100% stands on 6.00 mm (Screen 15)", "Clean garbled; PB maximum 2%; triage maximum 2% by weight"),
+  grade("Robusta Cherry PB Bold", "Premium · Robusta Cherry", "Natural Robusta", cherryMoisture, "100% retained on 4.50 mm oblong sieve (Screen 11 oblong)", "Clean garbled; AB maximum 2%; PB triage maximum 2% by weight"),
+];
+
+const specialties = [
+  grade("Mysore Nuggets Extra Bold", "Specialty · Extra Bold", "Washed Arabica", specialtyMoisture, "Minimum 90% retained on 7.50 mm (Screen 19); 100% retained on 6.65 mm (Screen 17); the 10% between these sieves must be whole beans", "Medium to well polished and clean garbled; free from PB; brokens including triage and elephant beans; extraneous matter; bleached/spongy, black, brown, insect-damaged, fungal-damaged and pulper-cut beans", "Mysore, Coorg, Bababudan, Biligiris and Shevaroys"),
+  grade("Robusta Kaapi Royale", "Specialty · Kaapi Royale", "Washed Robusta", specialtyMoisture, "Minimum 90% retained on 6.70 mm (Screen 17); 100% retained on 6.00 mm (Screen 15); the 10% between these sieves must be whole beans", "Medium to well polished and clean garbled; free from PB; brokens including triage and elephant beans; extraneous matter; unwashed, bleached/spongy, black, brown, insect-damaged, fungal-damaged and pulper-cut beans", "Mysore, Coorg, Travancore, Wayanad, Shevaroys, Pulneys and Bababudan"),
+  grade("Monsooned Malabar AAA", "Specialty · Monsooned Arabica", "Monsooned Arabica Cherry", monsoonMoisture, "Minimum 90% retained on 7.50 mm (Screen 19); maximum 1.5% passes 7.10 mm (Screen 18)", "Clean garbled; triage maximum 2%; BBB nil", "India · Malabar Coast"),
+  grade("Monsooned Malabar AA", "Specialty · Monsooned Arabica", "Monsooned Arabica Cherry", monsoonMoisture, "Minimum 90% retained on 7.10 mm (Screen 18); maximum 1.5% passes 6.70 mm (Screen 17)", "Clean garbled; triage maximum 2%; BBB nil", "India · Malabar Coast"),
+  grade("Monsooned Malabar A", "Specialty · Monsooned Arabica", "Monsooned Arabica Cherry", monsoonMoisture, "Minimum 75% retained on 6.70 mm (Screen 17); maximum 1.5% passes 6.00 mm (Screen 15)", "Triage maximum 3%; BBB nil", "India · Malabar Coast"),
+  grade("Monsooned Malabar Arabica Triage", "Specialty · Monsooned Arabica", "Monsooned Arabica Cherry", monsoonMoisture, "Minimum 90% retained on 6.00 mm (Screen 15)", "BBB maximum 3%", "India · Malabar Coast"),
+  grade("Monsooned Malabar Robusta RR", "Specialty · Monsooned Robusta", "Monsooned Robusta Cherry", monsoonMoisture, "Minimum 90% retained on 7.10 mm (Screen 18); maximum 1.5% passes 6.70 mm (Screen 17)", "Clean garbled; triage maximum 3%; BBB nil", "India · Malabar Coast"),
+  grade("Monsooned Malabar Robusta Triage", "Specialty · Monsooned Robusta", "Monsooned Robusta Cherry", monsoonMoisture, "Minimum 90% retained on 6.00 mm (Screen 15)", "BBB maximum 3%", "India · Malabar Coast"),
+];
+
+const miscellaneous = [
+  grade("Liberia Bulk", "Miscellaneous · Liberica", "Natural Liberica", noSeparateMoisture, "Ungraded", "Blacks, browns and bits combined: maximum 20% by weight"),
+  grade("Excelsia Bulk", "Miscellaneous · Excelsa", "Natural Excelsa", noSeparateMoisture, "Ungraded", "Blacks, browns and bits combined: maximum 20% by weight"),
+];
 
 export const categories: Category[] = [
   {
-    slug: "arabica", title: "Arabica", eyebrow: "Washed plantation coffee",
-    description: "Clean, carefully garbled Indian Arabica for roasters seeking structure, sweetness, and dependable physical preparation.",
-    seo: "Arabica Plantation AA green coffee India — washed grades from Chikkamagalur and Kodagu.",
-    grades: [
-      { name:"Plantation AA", origin:westernGhats, moisture:"10.5% (±0.5% permissible)", screen:"≥90% Screen 18 (7.10 mm); 100% Screen 17", tolerance:"Clean garbled; PB ≤2%, triage ≤3%", packaging:"60 kg jute; GrainPro/Eco-Tact liner on request" },
-      { name:"Plantation A", origin:westernGhats, moisture:"10.5% (±0.5% permissible)", screen:"≥90% Screen 17 (6.65 mm); ≤1.5% passes Screen 15", tolerance:"Clean garbled; PB ≤2%, triage ≤3%", packaging:"60 kg jute; liner on request" },
-      { name:"Plantation B", origin:westernGhats, moisture:"10.5% (±0.5% permissible)", screen:"≥75% Screen 15 (6.00 mm); ≤1.5% passes Screen 14", tolerance:"Clean garbled; PB ≤2%, triage ≤3%", packaging:"60 kg jute; liner on request" },
-      { name:"Plantation C", origin:westernGhats, moisture:"10.5% (±0.5% permissible)", screen:"≥75% Screen 14; 100% stands Screen 13", tolerance:"Free from blacks & damaged beans", packaging:"60 kg jute" },
-      { name:"Plantation Bulk", origin:westernGhats, moisture:"10.5% (±0.5% permissible)", screen:"Ungraded", tolerance:"Blacks/browns/bits ≤2%", packaging:"60 kg jute" },
-    ],
+    slug: "arabica",
+    title: "Arabica",
+    eyebrow: "Plantation and Arabica Cherry",
+    description: "The complete Coffee Board register for washed Plantation and natural Arabica Cherry grades, including commercial and premium preparations.",
+    seo: "Complete Indian Arabica Plantation and Arabica Cherry green coffee grade specifications.",
+    grades: [...plantation, ...arabicaCherry],
   },
   {
-    slug: "robusta", title: "Robusta", eyebrow: "Washed and natural grades",
-    description: "Structured Indian Robusta prepared for espresso, soluble, and blend programmes with clear screen and defect tolerances.",
-    seo: "Robusta parchment supplier India — washed and cherry grades from the Western Ghats.",
-    grades: [
-      { name:"Kaapi Royale (washed)", origin:"Mysore, Kodagu, Wayanad, Travancore, Shevaroy, Bababudan", moisture:"9.0–10.5%", screen:"≥90% Screen 17 (6.70 mm); 100% Screen 15", tolerance:"Free from defects & foreign matter; medium-well polished", packaging:"60 kg jute; liner on request" },
-      { name:"Parchment AB", origin:westernGhats, moisture:"10.5%", screen:"≥90% Screen 15; ≤1.5% passes Screen 14", tolerance:"Clean garbled; PB ≤2%, triage ≤3%", packaging:"60 kg jute; liner on request" },
-      { name:"Cherry AA", origin:westernGhats, moisture:"11.5%", screen:"≥90% Screen 18 (7.10 mm); 100% Screen 17", tolerance:"Clean garbled; PB ≤2%, triage ≤1%", packaging:"60 kg jute" },
-      { name:"Cherry AB", origin:westernGhats, moisture:"11.5%", screen:"≥90% Screen 15", tolerance:"Clean garbled", packaging:"60 kg jute" },
-    ],
+    slug: "robusta",
+    title: "Robusta",
+    eyebrow: "Parchment and Robusta Cherry",
+    description: "The complete Coffee Board register for washed Robusta Parchment and natural Robusta Cherry grades, including commercial and premium preparations.",
+    seo: "Complete Indian Robusta Parchment and Robusta Cherry green coffee grade specifications.",
+    grades: [...robustaParchment, ...robustaCherry],
   },
   {
-    slug: "specialty", title: "Specialty", eyebrow: "Distinctive Indian preparations",
-    description: "Recognisable Indian profiles shaped by monsooning, origin, and exceptional screen selection.",
-    seo: "Monsooned Malabar exporter — distinctive Indian green coffee grades for global buyers.",
-    grades: [
-      { name:"Monsooned Malabar AA", origin:"India (West Coast monsooning)", moisture:"13.0–14.5%", screen:"≥90% Screen 19 (7.50 mm); ≤1.5% passes Screen 18", tolerance:"Clean garbled; triage ≤3%", packaging:"50–60 kg jute on request" },
-      { name:"Monsooned Malabar A", origin:"India (West Coast monsooning)", moisture:"13.0–14.5%", screen:"≥75% Screen 17; ≤1.5% passes Screen 15", tolerance:"Triage ≤3%", packaging:"50–60 kg jute on request" },
-      { name:"Mysore Nuggets Extra Bold", origin:"Mysore, Biligiris, Shevaroy", moisture:"9.0–10.5%", screen:"≥90% Screen 19; 100% Screen 17", tolerance:"Defects absent", packaging:"60 kg jute; liner on request" },
-    ],
+    slug: "specialty",
+    title: "Specialty",
+    eyebrow: "Distinctive Indian preparations",
+    description: "Coffee Board-defined specialty and monsooned grades with named origin, screen, moisture, and physical preparation requirements.",
+    seo: "Complete Indian specialty and Monsooned Malabar green coffee grade specifications.",
+    grades: specialties,
+  },
+  {
+    slug: "miscellaneous",
+    title: "Other official grades",
+    eyebrow: "Liberica and Excelsa",
+    description: "The Coffee Board's miscellaneous bulk grade designations, shown separately from commercial Arabica, Robusta, and specialty coffees.",
+    seo: "Official Indian Liberica and Excelsa miscellaneous coffee grade specifications.",
+    grades: miscellaneous,
   },
 ];
 
 export const fields: [keyof Grade, string][] = [
-  ["origin","Origin"],["name","Grade"],["moisture","Moisture Content"],
-  ["screen","Screen Size"],["tolerance","Defect Tolerance"],["packaging","Packaging"],
+  ["family", "Classification"],
+  ["preparation", "Preparation"],
+  ["origin", "Origin"],
+  ["name", "Grade"],
+  ["moisture", "Moisture"],
+  ["screen", "Sieve / screen standard"],
+  ["tolerance", "Garbling / tolerance"],
 ];
 
-const preparationByCategory = {
-  arabica: "Arabica",
-  robusta: "Robusta",
-  specialty: "Specialty",
-};
-
-export const detailedProducts: CatalogueProduct[] = categories.flatMap(category =>
-  category.grades.map(grade => ({
-    ...grade,
-    category: category.slug,
-    preparation: preparationByCategory[category.slug],
-    source: "detailed" as const,
-  }))
+export const allProducts: CatalogueProduct[] = categories.flatMap(category =>
+  category.grades.map(item => ({ ...item, category: category.slug })),
 );
 
-export const legacyProducts: CatalogueProduct[] = [
-  { name:"Arabica Cherry PB", category:"arabica", preparation:"Natural Arabica", origin:"India", screen:"PB (Peaberry)", moisture:"Within ICB prescribed limits", profile:"Natural Arabica peaberry with fruit-forward cup potential", source:"legacy" },
-  { name:"Arabica Cherry AB", category:"arabica", preparation:"Natural Arabica", origin:"India", screen:"Typically 15+", moisture:"Within ICB prescribed limits", profile:"Natural Arabica for balanced roasting and blend programs", source:"legacy" },
-  { name:"Arabica Cherry C", category:"arabica", preparation:"Natural Arabica", origin:"India", screen:"As per ICB norms", moisture:"Within ICB prescribed limits", profile:"Commercial natural Arabica with consistent physicals", source:"legacy" },
-  { name:"Robusta Plantation PB", category:"robusta", preparation:"Washed Robusta", origin:"India (Karnataka / Andhra Pradesh)", screen:"PB (Peaberry)", moisture:"As per export standards", profile:"Dense Robusta peaberry with uniform roast behavior", source:"legacy" },
-  { name:"Robusta Plantation AB", category:"robusta", preparation:"Washed Robusta", origin:"India", screen:"Typically 16+", moisture:"As per export standards", profile:"Clean washed Robusta for espresso and blends", source:"legacy" },
-  { name:"Robusta Plantation C", category:"robusta", preparation:"Washed Robusta", origin:"India", screen:"As per ICB norms", moisture:"As per export standards", profile:"Commercial Robusta for strength-oriented blends", source:"legacy" },
-  { name:"Robusta Plantation Bulk", category:"robusta", preparation:"Washed Robusta", origin:"India", screen:"Mixed, lot-specific", moisture:"Within export norms", profile:"Volume Robusta supply", source:"legacy" },
-  { name:"Robusta Cherry PB", category:"robusta", preparation:"Natural Robusta", origin:"India", screen:"PB (Peaberry)", moisture:"As per export standards", profile:"Natural Robusta peaberry with dense body and strong roast performance", source:"legacy" },
-  { name:"Robusta Cherry AB", category:"robusta", preparation:"Natural Robusta", origin:"India", screen:"Typically 16+", moisture:"As per export standards", profile:"Natural Robusta for espresso, blends, and commercial programs", source:"legacy" },
-  { name:"Robusta Cherry C", category:"robusta", preparation:"Natural Robusta", origin:"India", screen:"As per ICB norms", moisture:"As per export standards", profile:"Commercial natural Robusta with dependable physicals", source:"legacy" },
-  { name:"Monsooned Coffee", category:"specialty", preparation:"Monsooned", origin:"India (Malabar Coast)", screen:"As per specialty norms", moisture:"As per specialty export norms", profile:"Low acidity, monsoon-conditioned physical character", source:"legacy" },
-  { name:"Mysore Nuggets EB", category:"specialty", preparation:"Extra Bold Arabica", origin:"Karnataka, India", screen:"18+", moisture:"Within ICB limits", profile:"Large, bold Arabica beans with consistent physicals", source:"legacy" },
-  { name:"Robusta Kaapi Royale", category:"specialty", preparation:"Kaapi Royale", origin:"India", screen:"Typically 18+", moisture:"As per export standards", profile:"Premium washed Robusta with low defect count", source:"legacy" },
-];
-
-export const allProducts = [...detailedProducts, ...legacyProducts];
+export const officialGradeSource = {
+  name: "Coffee Board of India — A Guide to Indian Coffee Quality Specifications",
+  url: "https://coffeeboard.gov.in/Indian%20Coffee/coffee%20karma.pdf",
+};
 
 export const siteUrl = "https://www.rihlaglobal.com";

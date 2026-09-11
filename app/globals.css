@@ -34,6 +34,12 @@
 .catalogue-section,.certificates-section{padding-top:3rem}
 .catalogue-section .section-head{margin-bottom:2.5rem}
 .catalogue-kicker{margin:0 0 1.5rem;color:#6b5f57}
+.catalogue-assurance{margin-top:3rem;padding:2rem;border-left:4px solid var(--brass);background:var(--espresso);color:#fff}
+.catalogue-assurance>p:not(.kicker){max-width:900px;line-height:1.7;color:rgba(255,255,255,.82)}
+.catalogue-assurance .text-link{color:#fff}
+.table-scroll{overflow-x:auto}
+.grade-basis{grid-column:1/-1;margin-top:2rem;padding:2rem;border-top:3px solid var(--brass);background:#fff}
+.grade-basis>p:not(.kicker){max-width:850px;line-height:1.7;color:#655950}
 .insights-hero{height:62vh;min-height:500px}
 .insights-intro{padding-top:5rem}
 .insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}

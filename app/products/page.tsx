@@ -3,7 +3,7 @@ import { ProductCatalogue } from "@/components/ProductCatalogue";
 
 export const metadata: Metadata = {
   title: "All Indian Green Coffee Products",
-  description: "Filter the complete Rihla Global catalogue of Arabica, Robusta and specialty Indian green coffee products.",
+  description: "Filter all 46 Coffee Board of India green coffee grade designations with clear moisture, screen, and tolerance specifications.",
   alternates: { canonical: "/products" },
 };
 
@@ -14,7 +14,7 @@ export default function ProductsPage() {
       <div className="page-hero-content">
         <p className="kicker">Complete product desk</p>
         <h1>Every coffee.<br />One clear catalogue.</h1>
-        <p>Browse all current detailed specifications and every product from the legacy catalogue. Filter by category without hiding the full range from the page.</p>
+        <p>Review all 46 Coffee Board grade designations with explicit moisture, sieve, garbling, and tolerance limits. Filter without losing the full register.</p>
       </div>
     </section>
     <section className="section catalogue-section">
