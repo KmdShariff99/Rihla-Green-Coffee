@@ -1,1 +1,2 @@
 - [Route content visibility](route-content-visibility.md) — keep content visible without JavaScript; one-time reveal observers can miss client-navigated elements.
+- [Portable npm lockfiles](portable-npm-lockfiles.md) — omit registry-specific resolved URLs so builds work on both Replit and external deployment providers.
