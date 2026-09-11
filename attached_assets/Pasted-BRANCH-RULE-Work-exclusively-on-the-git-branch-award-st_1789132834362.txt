@@ -1,0 +1,65 @@
+BRANCH RULE: Work exclusively on the git branch "award-static" (already checked out). You may read this repository's existing files and git history to reuse exact business copy (about, export process, resources text), but replace the root application with the new static Next.js build described below. Commit to award-static frequently. NEVER push to main.
+
+You are an Awwwards-level creative developer, senior technical SEO engineer, and web security engineer. Build RIHLA GLOBAL — a premium editorial, 100% STATIC website for an Indian green coffee exporter (Bengaluru, India).
+
+REPLIT-SPECIFIC INSTRUCTIONS:
+- You have shell access. Download the REAL binary assets from the live production site into public/ using curl (e.g. curl -o public/logo.png https://www.rihlaglobal.com/logo.png, same for favicon). For certification PDFs: first curl https://www.rihlaglobal.com/certifications/ and extract the exact .pdf hrefs from the HTML, then download each into public/certifications/. Verify every file exists and is non-empty (ls -la public/ public/certifications/). If any download 404s, hotlink that asset with its absolute https://www.rihlaglobal.com/... URL instead and note it in your report.
+- After every major change, run the production build yourself and fix ALL errors before reporting.
+- Commit to git frequently so no work is lost.
+- At the end, give me step-by-step instructions to push branch award-static to this Repl's connected GitHub repository.
+
+OUTPUT REQUIREMENTS:
+- Next.js App Router with next.config: output: 'export' AND images: { unoptimized: true }. Pure static HTML/CSS/JS, no server.
+- NO framer-motion, NO gsap, NO three.js, NO iframes, NO embeds, NO paid third-party services.
+- Motion = pure CSS keyframes/transitions + ONE tiny IntersectionObserver hook adding an .in-view class. Gate reveal styles behind a "js" class on <html> so crawlers and no-JS users see full content. Respect prefers-reduced-motion. Zero layout shift.
+- Fonts via next/font (self-hosted): Fraunces for display, Inter for body.
+
+DESIGN LANGUAGE (award-caliber editorial):
+- Palette: espresso #2C1E16, parchment #F7F3EC, plantation green #2D4A22, brass accent #B08D57.
+- Oversized display headings with line-mask reveal on load (overflow-hidden spans, translateY 100% to 0, staggered).
+- Numbered editorial sections (01 Origin, 02 Process, 03 Grades, 04 Export Desk) with hairline rules; max-w-6xl container; sections py-24+; 12-column grid; generous whitespace.
+- Sticky two-column supply story (left sticky heading, right scrolling steps: Plantation, Cherry & Process, Green Coffee, Export Desk).
+- Full-width CSS marquee ticker: "CHIKKAMAGALUR • KODAGU • PLANTATION AA • MONSOONED MALABAR • ROBUSTA PARCHMENT •"
+- Subtle film-grain overlay (fixed SVG noise, opacity 0.04, pointer-events-none); custom selection color; elegant focus-visible rings; branded 404 page.
+- Cards: hover lift + inner image scale 1.05 inside overflow-hidden; uniform radius/border/shadow.
+
+PAGES & CONTENT (never invent business data; reuse exact copy from repo history where available):
+- Home: H1 "Indian green coffee, prepared for the world."; marquee; sticky supply story; stats band (500 kg minimum order, 60 kg jute bags, GrainPro/hermetic liners on request); three coffee category cards (Arabica, Robusta, Specialty); CTA band with "Request Specifications" and WhatsApp button (https://api.whatsapp.com/send?phone=919398540256).
+- /products/arabica, /products/robusta, /products/specialty: grade tab cards with the specification block INSIDE each card; switching grades updates specs inside the card; ALL grade variants present in static HTML. Spec fields per card: Origin, Grade, Moisture Content, Screen Size, Defect Tolerance, Packaging. Use exactly this Coffee Board-aligned dataset:
+  ARABICA (moisture 10.5%, ±0.5% permissible):
+  • Plantation AA — Screen: ≥90% Screen 18 (7.10 mm), 100% Screen 17 — Tolerance: clean garbled; PB ≤2%, triage ≤3% — Packing: 60 kg jute; GrainPro/Eco-Tact liner on request — Origin: Western Ghats, India (Chikkamagalur/Kodagu)
+  • Plantation A — ≥90% Screen 17 (6.65 mm); ≤1.5% passes Screen 15 — clean garbled; PB ≤2%, triage ≤3% — 60 kg jute; liner on request — same origin
+  • Plantation B — ≥75% Screen 15 (6.00 mm); ≤1.5% passes Screen 14 — clean garbled; PB ≤2%, triage ≤3% — 60 kg jute; liner on request — same origin
+  • Plantation C — ≥75% Screen 14; 100% stands Screen 13 — free from blacks & damaged beans — 60 kg jute — same origin
+  • Plantation Bulk — ungraded — blacks/browns/bits ≤2% — 60 kg jute — same origin
+  ROBUSTA:
+  • Kaapi Royale (washed) — moisture 9.0–10.5% — ≥90% Screen 17 (6.70 mm); 100% Screen 15 — free from defects & foreign matter; medium-well polished — 60 kg jute; liner on request — Origin: Mysore, Kodagu, Wayanad, Travancore, Shevaroy, Bababudan
+  • Parchment AB — moisture 10.5% — ≥90% Screen 15; ≤1.5% passes Screen 14 — clean garbled; PB ≤2%, triage ≤3% — 60 kg jute; liner on request — Western Ghats, India (Chikkamagalur/Kodagu)
+  • Cherry AA — moisture 11.5% — ≥90% Screen 18 (7.10 mm); 100% Screen 17 — clean garbled; PB ≤2%, triage ≤1% — 60 kg jute — same origin
+  • Cherry AB — moisture 11.5% — ≥90% Screen 15 — clean garbled — 60 kg jute — same origin
+  SPECIALTY:
+  • Monsooned Malabar AA — moisture 13.0–14.5% — ≥90% Screen 19 (7.50 mm); ≤1.5% passes Screen 18 — clean garbled; triage ≤3% — 50–60 kg jute on request — Origin: India (West Coast monsooning)
+  • Monsooned Malabar A — moisture 13.0–14.5% — ≥75% Screen 17; ≤1.5% passes Screen 15 — triage ≤3% — 50–60 kg jute on request — same origin
+  • Mysore Nuggets Extra Bold — moisture 9.0–10.5% — ≥90% Screen 19; 100% Screen 17 — defects absent — 60 kg jute; liner on request — Origin: Mysore, Biligiris, Shevaroy
+- /e-catalogue: render the FULL dataset above as editorial specification tables (all grades), plus this trust note verbatim: "Grading and garbling per Coffee Board of India standards. Every lot ships with a Certificate of Analysis covering moisture, screen retention, and defect count. Contract specifications govern each confirmation." Plus one secondary link "Open legacy catalogue" to https://www.rihlaglobal.com/e-catalogue.html.
+- /certifications: three document cards — GST Registration (GSTIN 29KMSPS9159C1ZY), Coffee Board RCMC (code 3116, valid through 31 March 2030), Importer-Exporter Code (IEC KMSPS9159C, issued 18 January 2025). Each card has exactly ONE "View Certificate" link (target="_blank" rel="noopener noreferrer") to the local PDF in public/certifications/. NO download buttons, NO iframes.
+- /about, /resources, /contact: reuse exact copy from repo history where available; simple, consistent with the design system.
+- Footer: Bengaluru, India; exports@rihlaglobal.com (obfuscated against scraping bots but human-usable); WhatsApp link.
+
+SPELLING RULE:
+- All visible content uses the official spellings "Chikkamagalur" and "Kodagu" only. Never display "Chikmagalur" or "Coorg" in visible text.
+- For SEO coverage, include the common search variants "Chikmagalur" and "Coorg" ONLY inside meta descriptions and JSON-LD keywords as secondary terms.
+
+SEO & SECURITY:
+- Metadata API per page: unique title <60 chars, description <155 chars, canonical, Open Graph, Twitter card. Keyword mapping: Home "Indian green coffee exporter"; Arabica "Arabica Plantation AA green coffee India"; Robusta "Robusta parchment supplier India"; Specialty "Monsooned Malabar exporter"; Certifications "Coffee Board registered coffee exporter India"; append brand "Rihla Global".
+- Semantic HTML (header, nav, main, section, article, footer); exactly one h1 per page; JSON-LD Organization + Product + BreadcrumbList schemas; mirror the per-grade specification values into Product additionalProperty.
+- robots.txt + sitemap.xml with canonical https://www.rihlaglobal.com URLs; preserve/update llms.txt.
+- vercel.json: security headers (HSTS max-age=63072000 includeSubDomains preload, X-Content-Type-Options nosniff, X-Frame-Options DENY, Referrer-Policy strict-origin-when-cross-origin, Permissions-Policy camera=() microphone=() geolocation=()) AND host-based 301 redirect from rihlaglobal.com apex to www.rihlaglobal.com (use a "has host" rule; middleware is unavailable in static export) AND redirects /e-catalogue.html -> /e-catalogue and /certifications/index.html -> /certifications.
+- public/.well-known/security.txt with contact email and one-year expiry.
+- GA4 via next/script strategy="afterInteractive" using env var NEXT_PUBLIC_GA_ID, production builds only.
+- Forms: honeypot field, reject submissions under 3 seconds, disable submit while processing. External links rel="noopener noreferrer".
+
+EXECUTION & REPORTING:
+- Implement everything, run the build until zero errors, and serve the static output to verify pages render.
+- Report: (a) files created, (b) assets downloaded vs hotlinked, (c) build status, (d) confirmation that certifications links, grade spec cards, catalogue tables, and animations work, (e) exact steps to push branch award-static to GitHub, (f) confirmation no business data was invented and the spelling rule was followed.
+- If you stop mid-way, I will send "Continue from Workstream: <section name>" — resume exactly there without repeating completed work.
