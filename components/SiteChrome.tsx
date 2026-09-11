@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const links = [["/about","About"],["/products","Coffees"],["/resources","Resources"],["/certifications","Certifications"],["/contact","Contact"]];
+const links = [["/about","About"],["/products","Products"],["/insights","Insights"],["/certifications","Certifications"],["/contact","Contact"]];
 
 export function Header() {
   const [open,setOpen]=useState(false);

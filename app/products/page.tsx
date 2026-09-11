@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ProductsPage() {
   return <main id="main">
-    <section className="page-hero">
+    <section className="page-hero compact-hero">
       <img src="/images/catalogue-samples.jpg" alt="Arabica, Robusta and specialty green coffee samples" />
       <div className="page-hero-content">
         <p className="kicker">Complete product desk</p>
@@ -17,11 +17,8 @@ export default function ProductsPage() {
         <p>Browse all current detailed specifications and every product from the legacy catalogue. Filter by category without hiding the full range from the page.</p>
       </div>
     </section>
-    <section className="section">
-      <div className="section-head">
-        <span className="section-no">01 / FILTER & COMPARE</span>
-        <h2>Find the grade that fits your programme.</h2>
-      </div>
+    <section className="section catalogue-section">
+      <p className="kicker catalogue-kicker">01 / Filter & compare · Find the grade that fits your programme</p>
       <ProductCatalogue />
     </section>
   </main>;
