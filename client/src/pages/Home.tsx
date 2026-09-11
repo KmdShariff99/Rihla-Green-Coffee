@@ -6,6 +6,7 @@ import plantationImage from "@assets/stock_images/coffee_plantation_la_7f8b9a7f.
 import warehouseImage from "@assets/stock_images/coffee_export_wareho_9dc79469.jpg";
 import { PlantationCarousel } from "@/components/PlantationCarousel";
 import { MotionReveal } from "@/components/MotionReveal";
+import { CountUp } from "@/components/CountUp";
 
 const journeys = [
   ["01", "Plantation", "Where altitude, shade, and careful cultivation shape the lot."],
@@ -31,7 +32,7 @@ export default function Home() {
       <div className="absolute inset-0 bg-[linear-gradient(0deg,hsl(155_25%_8%/.72),transparent_45%)]" />
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-16 pt-32 lg:px-8 lg:pb-24">
         <div className="max-w-3xl"><p className="eyebrow mb-7 text-accent">Indian origin · green coffee · export desk</p><h1 className="display-title max-w-3xl text-white">Indian green coffee, prepared for the world.</h1><p className="mt-7 max-w-xl text-base leading-7 text-white/75 sm:text-lg">Export-ready Arabica, Robusta, and specialty coffees with transparent specifications and a direct line to the people behind each enquiry.</p><div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link href="/contact"><Button size="lg" className="rounded-full px-7">Request specifications <ArrowRight data-icon="inline-end" /></Button></Link><Link href="/products"><Button size="lg" variant="outline" className="rounded-full border-white/35 bg-white/10 px-7 text-white backdrop-blur hover:bg-white/20">Explore our coffees <ArrowDownRight data-icon="inline-end" /></Button></Link></div></div>
-        <div className="mt-16 flex flex-col gap-5 border-t border-white/20 pt-5 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between"><span>Minimum order · 500 kg</span><span>60 kg jute bags · GrainPro or hermetic liners on request</span><a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-accent hover:text-white"><MessageCircle className="size-4" /> Start a buyer conversation</a></div>
+        <div className="mt-16 flex flex-col gap-5 border-t border-white/20 pt-5 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between"><span>Minimum order · <CountUp value={500} suffix=" kg" /></span><span><CountUp value={60} suffix=" kg" /> jute bags · GrainPro or hermetic liners on request</span><a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-accent hover:text-white"><MessageCircle className="size-4" /> Start a buyer conversation</a></div>
       </div>
     </section>
 
