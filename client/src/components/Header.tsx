@@ -8,7 +8,6 @@ const navLinks = [
   { href: "/products", label: "Coffees", external: false },
   { href: "/about", label: "Our approach", external: false },
   { href: "/export-process", label: "Export process", external: false },
-  { href: "/certifications", label: "Certifications", external: false },
   { href: "/blog", label: "Insights", external: false },
   { href: "/contact", label: "Contact", external: false },
 ];

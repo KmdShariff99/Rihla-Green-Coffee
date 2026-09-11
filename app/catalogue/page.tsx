@@ -1,20 +1,33 @@
 import type { Metadata } from "next";
+import { products } from "../../shared/schema";
 
 export const metadata: Metadata = {
   title: "E-Catalogue | Rihla Global",
-  description: "View the Rihla Global Indian green coffee export catalogue online.",
+  description: "Browse Rihla Global Indian green coffee grades and physical specifications.",
   alternates: { canonical: "/catalogue" },
 };
 
+const packaging = "60 kg jute bags with GrainPro / Eco-Tact liners";
+
 export default function CataloguePage() {
   return (
-    <main className="min-h-screen bg-background px-5 pb-12 pt-28 lg:px-8">
+    <main className="min-h-screen bg-background px-5 pb-20 pt-28 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-          <div><p className="eyebrow">Buyer resource</p><h1 className="mt-3 font-serif text-4xl">Rihla Global E-Catalogue</h1><p className="mt-3 max-w-2xl text-muted-foreground">Open the current Indian green coffee catalogue in a clean browser tab for your procurement team.</p></div>
-          <a href="https://www.rihlaglobal.com/e-catalogue.html" target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5">View catalogue</a>
+        <div className="max-w-3xl">
+          <p className="eyebrow">Buyer resource</p>
+          <h1 className="mt-4 font-serif text-4xl tracking-tight sm:text-5xl">Indian green coffee catalogue</h1>
+          <p className="mt-5 text-lg leading-8 text-muted-foreground">The catalogue below mirrors the current product section, including grade, origin, moisture, screen size, defect tolerance, and packaging.</p>
         </div>
-        <div className="border border-primary/15 bg-card p-8 shadow-sm"><p className="eyebrow">Current buyer catalogue</p><h2 className="mt-3 font-serif text-3xl">Indian green coffee programme</h2><p className="mt-4 max-w-2xl leading-7 text-muted-foreground">Open the current Rihla Global catalogue in a separate browser tab for a clean, full-page reading experience.</p><a href="https://www.rihlaglobal.com/e-catalogue.html" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5">View catalogue</a></div>
+        <div className="mt-12 overflow-hidden border border-primary/15 bg-card shadow-sm">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[980px] border-collapse text-left text-sm">
+              <caption className="sr-only">Rihla Global green coffee product specifications</caption>
+              <thead className="bg-primary text-primary-foreground"><tr>{["Product", "Category", "Origin", "Grade", "Moisture", "Screen size", "Defect tolerance", "Packaging"].map((heading) => <th key={heading} scope="col" className="px-5 py-4 font-semibold">{heading}</th>)}</tr></thead>
+              <tbody className="divide-y divide-primary/10">{products.map((product) => <tr key={product.id} className="align-top hover:bg-secondary/30"><th scope="row" className="px-5 py-5 font-serif text-base font-normal text-foreground">{product.name}<span className="mt-1 block font-sans text-xs text-muted-foreground">{product.technicalProfile}</span></th><td className="px-5 py-5 capitalize">{product.category}</td><td className="px-5 py-5 whitespace-nowrap">{product.origin}</td><td className="px-5 py-5 whitespace-nowrap">{product.grade}</td><td className="px-5 py-5">{product.moisture}</td><td className="px-5 py-5">{product.screenSize}</td><td className="px-5 py-5">Max 2% black/broken</td><td className="px-5 py-5">{packaging}</td></tr>)}</tbody>
+            </table>
+          </div>
+        </div>
+        <p className="mt-5 text-sm leading-6 text-muted-foreground">Availability remains lot-specific. Request the latest lot specification before ordering.</p>
       </div>
     </main>
   );
