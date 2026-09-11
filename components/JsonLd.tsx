@@ -1,6 +1,6 @@
 import { Category, siteUrl } from "@/lib/products";
 export function OrganizationJsonLd(){
-  const data={"@context":"https://schema.org","@type":"Organization",name:"Rihla Global",url:siteUrl,logo:`${siteUrl}/logo.jpeg`,address:{"@type":"PostalAddress",addressLocality:"Bengaluru",addressCountry:"IN"},sameAs:["https://api.whatsapp.com/send?phone=919398540256"],keywords:"Indian green coffee exporter, Chikmagalur coffee, Coorg coffee"};
+  const data={"@context":"https://schema.org","@type":"Organization",name:"Rihla Global",url:siteUrl,logo:`${siteUrl}/rihlaglobal-logo.png`,address:{"@type":"PostalAddress",addressLocality:"Bengaluru",addressCountry:"IN"},sameAs:["https://api.whatsapp.com/send?phone=919398540256"],keywords:"Indian green coffee exporter, Chikmagalur coffee, Coorg coffee"};
   return <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(data)}}/>;
 }
 export function CategoryJsonLd({category}:{category:Category}){

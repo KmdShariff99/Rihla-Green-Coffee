@@ -7,7 +7,7 @@ import "./globals.css";
 
 const inter=Inter({subsets:["latin"],variable:"--font-sans",display:"swap"});
 const fraunces=Fraunces({subsets:["latin"],variable:"--font-display",display:"swap"});
-export const metadata:Metadata={metadataBase:new URL("https://www.rihlaglobal.com"),title:{default:"Indian Green Coffee Exporter | Rihla Global",template:"%s | Rihla Global"},description:"Indian green coffee exporter supplying Arabica, Robusta and specialty grades from Chikkamagalur and Kodagu.",alternates:{canonical:"/"},openGraph:{type:"website",siteName:"Rihla Global",images:["/images/origin.jpg"]},twitter:{card:"summary_large_image"}};
+export const metadata:Metadata={metadataBase:new URL("https://www.rihlaglobal.com"),title:{default:"Indian Green Coffee Exporter | Rihla Global",template:"%s | Rihla Global"},description:"Indian green coffee exporter supplying Arabica, Robusta and specialty grades from Chikkamagalur and Kodagu.",icons:{icon:[{url:"/favicon.png",type:"image/png"}],apple:"/favicon.png"},alternates:{canonical:"/"},openGraph:{type:"website",siteName:"Rihla Global",images:[{url:"/rihlaglobal-logo.png",width:417,height:174,alt:"Rihlaglobal"}]},twitter:{card:"summary_large_image"}};
 
 export default function RootLayout({children}:{children:React.ReactNode}){
  const ga=process.env.NEXT_PUBLIC_GA_ID;
