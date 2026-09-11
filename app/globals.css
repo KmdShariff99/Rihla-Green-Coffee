@@ -64,3 +64,62 @@
 .reveal,
 .js .reveal,
 .js .reveal.in-view{opacity:1!important;transform:none!important}
+
+/* Tablet and phone refinements */
+@media (max-width:1024px) and (min-width:801px){
+  .section{padding-left:32px;padding-right:32px}
+  .site-header{padding-left:32px;padding-right:32px}
+  .site-header nav{gap:1.1rem}
+  .hero-content,.page-hero-content{width:calc(100% - 64px)}
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .card-grid .coffee-card:last-child{grid-column:1/-1;min-height:400px}
+  .document-grid{grid-template-columns:repeat(2,1fr)}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:640px){
+  html,body{overflow-x:hidden}
+  .site-header{padding:0 16px}
+  .wordmark span{font-size:1.25rem}
+  .menu-button{min-width:48px;min-height:48px;padding:.6rem;border:1px solid var(--line);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+  .site-header nav{padding:1rem 16px 1.25rem;gap:.35rem;border-bottom:1px solid var(--line);box-shadow:0 18px 32px rgba(44,30,22,.12)}
+  .site-header nav>a{padding:.8rem}
+  .hero{min-height:650px}
+  .hero-content{width:calc(100% - 32px);padding:5rem 0 3.5rem}
+  .hero h1{font-size:clamp(3rem,15vw,4.4rem);line-height:.94;margin:1rem 0}
+  .line-mask{overflow:visible}
+  .line-mask>span{animation:none}
+  .hero .lede{font-size:1rem;line-height:1.6}
+  .page-hero,.insights-hero{height:68vh;min-height:430px}
+  .compact-hero{height:360px;min-height:360px}
+  .page-hero-content{width:calc(100% - 32px);padding-bottom:2.5rem}
+  .page-hero h1{font-size:clamp(3rem,15vw,4.25rem);overflow-wrap:anywhere}
+  .section{padding:4.5rem 16px}
+  .section-head{gap:1rem;margin-bottom:2.5rem}
+  .section-head h2,.editorial-title{font-size:clamp(2.5rem,12vw,3.7rem)}
+  .story-step{grid-template-columns:42px 1fr;padding-bottom:3rem}
+  .story-step h3{font-size:1.7rem}
+  .stat{padding:2.2rem 16px}
+  .coffee-card{min-height:390px}
+  .card-copy{left:1.25rem;right:1.25rem;bottom:1.25rem}
+  .button{width:100%;gap:1rem}
+  .actions{width:100%}
+  .tab-list{grid-template-columns:1fr}
+  .tab-list button{min-height:48px;padding:.9rem .75rem}
+  .tab-list button[aria-selected=true]{padding-left:.75rem}
+  .spec-head h2{font-size:clamp(2.4rem,12vw,3.4rem)}
+  .spec-card{padding:1.25rem}
+  .catalogue-category{margin-bottom:3.5rem}
+  .catalogue-category h2{font-size:2.7rem}
+  .table-scroll{margin-right:-16px;padding-right:16px}
+  .spec-table{min-width:960px}
+  .catalogue-toolbar{gap:1rem}
+  .filter-group{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .filter-group button{min-height:48px;padding:.65rem}
+  .product-list-card{padding:1.25rem}
+  .product-list-card h2{font-size:1.8rem}
+  .catalogue-assurance,.grade-basis,.insights-note,.trust-note{padding:1.5rem}
+  .documents-section{gap:3rem}
+  .document-card{min-height:280px}
+  footer{padding:4rem 16px 2rem}
+}

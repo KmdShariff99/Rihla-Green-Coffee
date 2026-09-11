@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return <main id="main">
     <section className="page-hero compact-hero">
-      <img src="/images/catalogue-samples.jpg" alt="Arabica, Robusta and specialty green coffee samples" />
+      <img src="/images/catalogue-samples.jpg" alt="Arabica, Robusta and specialty green coffee samples" width="1024" height="1024" fetchPriority="high" decoding="async" />
       <div className="page-hero-content">
         <p className="kicker">Complete product desk</p>
         <h1>Every coffee.<br />One clear catalogue.</h1>
