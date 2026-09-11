@@ -21,7 +21,7 @@ export function Footer() {
     <div className="footer-grid">
       <div><p className="wordmark light"><span>RIHLA</span><small>GLOBAL</small></p><p className="footer-note">Indian green coffee, prepared with clarity for international buyers.</p></div>
       <div><p className="kicker">Navigate</p><Link href="/products/arabica">Arabica</Link><Link href="/products/robusta">Robusta</Link><Link href="/products/specialty">Specialty</Link><Link href="/products/miscellaneous">Other official grades</Link><Link href="/e-catalogue">E-catalogue</Link></div>
-      <div><p className="kicker">Export desk</p><p>Bengaluru, India</p><a href={"mailto:"+"exports"+"@"+"rihlaglobal.com"}>{"exports"+"@"+"rihlaglobal.com"}</a><a href="https://api.whatsapp.com/send?phone=919398540256" target="_blank" rel="noopener noreferrer">WhatsApp +91 93985 40256 ↗</a></div>
+      <div><p className="kicker">Export desk</p><p>Bengaluru, India</p><a href="mailto:exports%40rihlaglobal.com" dangerouslySetInnerHTML={{__html:"exports&#64;rihlaglobal&#46;com"}}/><a href="https://api.whatsapp.com/send?phone=919398540256" target="_blank" rel="noopener noreferrer">WhatsApp +91 93985 40256 ↗</a></div>
     </div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} Rihla Global</span><Link href="/certifications">Registered export credentials</Link></div>
   </footer>;

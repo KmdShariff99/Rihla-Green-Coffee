@@ -8,7 +8,7 @@ Premium editorial website for Rihla Global, an Indian green coffee exporter base
 
 - Next.js App Router with TypeScript
 - Static export (`output: "export"`)
-- Plain CSS, CSS keyframes/transitions, and one IntersectionObserver reveal hook
+- Plain CSS with content visible by default, including without JavaScript
 - `next/font` self-hosted Fraunces and Inter
 - No backend, database, iframe, paid service, or animation library
 
@@ -17,10 +17,10 @@ Premium editorial website for Rihla Global, an Indian green coffee exporter base
 The **Start application** workflow runs:
 
 ```bash
-npm run dev
+npm start
 ```
 
-The development site is available on port 5000.
+The generated static export is available on port 5000.
 
 ## Production build
 
