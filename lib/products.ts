@@ -8,6 +8,19 @@ export type Category = {
   title: string; eyebrow: string; description: string; seo: string; grades: Grade[];
 };
 
+export type CatalogueProduct = {
+  name: string;
+  category: "arabica" | "robusta" | "specialty";
+  preparation: string;
+  origin: string;
+  moisture: string;
+  screen: string;
+  profile?: string;
+  tolerance?: string;
+  packaging?: string;
+  source: "detailed" | "legacy";
+};
+
 const westernGhats = "Western Ghats, India (Chikkamagalur/Kodagu)";
 
 export const categories: Category[] = [
@@ -50,5 +63,38 @@ export const fields: [keyof Grade, string][] = [
   ["origin","Origin"],["name","Grade"],["moisture","Moisture Content"],
   ["screen","Screen Size"],["tolerance","Defect Tolerance"],["packaging","Packaging"],
 ];
+
+const preparationByCategory = {
+  arabica: "Arabica",
+  robusta: "Robusta",
+  specialty: "Specialty",
+};
+
+export const detailedProducts: CatalogueProduct[] = categories.flatMap(category =>
+  category.grades.map(grade => ({
+    ...grade,
+    category: category.slug,
+    preparation: preparationByCategory[category.slug],
+    source: "detailed" as const,
+  }))
+);
+
+export const legacyProducts: CatalogueProduct[] = [
+  { name:"Arabica Cherry PB", category:"arabica", preparation:"Natural Arabica", origin:"India", screen:"PB (Peaberry)", moisture:"Within ICB prescribed limits", profile:"Natural Arabica peaberry with fruit-forward cup potential", source:"legacy" },
+  { name:"Arabica Cherry AB", category:"arabica", preparation:"Natural Arabica", origin:"India", screen:"Typically 15+", moisture:"Within ICB prescribed limits", profile:"Natural Arabica for balanced roasting and blend programs", source:"legacy" },
+  { name:"Arabica Cherry C", category:"arabica", preparation:"Natural Arabica", origin:"India", screen:"As per ICB norms", moisture:"Within ICB prescribed limits", profile:"Commercial natural Arabica with consistent physicals", source:"legacy" },
+  { name:"Robusta Plantation PB", category:"robusta", preparation:"Washed Robusta", origin:"India (Karnataka / Andhra Pradesh)", screen:"PB (Peaberry)", moisture:"As per export standards", profile:"Dense Robusta peaberry with uniform roast behavior", source:"legacy" },
+  { name:"Robusta Plantation AB", category:"robusta", preparation:"Washed Robusta", origin:"India", screen:"Typically 16+", moisture:"As per export standards", profile:"Clean washed Robusta for espresso and blends", source:"legacy" },
+  { name:"Robusta Plantation C", category:"robusta", preparation:"Washed Robusta", origin:"India", screen:"As per ICB norms", moisture:"As per export standards", profile:"Commercial Robusta for strength-oriented blends", source:"legacy" },
+  { name:"Robusta Plantation Bulk", category:"robusta", preparation:"Washed Robusta", origin:"India", screen:"Mixed, lot-specific", moisture:"Within export norms", profile:"Volume Robusta supply", source:"legacy" },
+  { name:"Robusta Cherry PB", category:"robusta", preparation:"Natural Robusta", origin:"India", screen:"PB (Peaberry)", moisture:"As per export standards", profile:"Natural Robusta peaberry with dense body and strong roast performance", source:"legacy" },
+  { name:"Robusta Cherry AB", category:"robusta", preparation:"Natural Robusta", origin:"India", screen:"Typically 16+", moisture:"As per export standards", profile:"Natural Robusta for espresso, blends, and commercial programs", source:"legacy" },
+  { name:"Robusta Cherry C", category:"robusta", preparation:"Natural Robusta", origin:"India", screen:"As per ICB norms", moisture:"As per export standards", profile:"Commercial natural Robusta with dependable physicals", source:"legacy" },
+  { name:"Monsooned Coffee", category:"specialty", preparation:"Monsooned", origin:"India (Malabar Coast)", screen:"As per specialty norms", moisture:"As per specialty export norms", profile:"Low acidity, monsoon-conditioned physical character", source:"legacy" },
+  { name:"Mysore Nuggets EB", category:"specialty", preparation:"Extra Bold Arabica", origin:"Karnataka, India", screen:"18+", moisture:"Within ICB limits", profile:"Large, bold Arabica beans with consistent physicals", source:"legacy" },
+  { name:"Robusta Kaapi Royale", category:"specialty", preparation:"Kaapi Royale", origin:"India", screen:"Typically 18+", moisture:"As per export standards", profile:"Premium washed Robusta with low defect count", source:"legacy" },
+];
+
+export const allProducts = [...detailedProducts, ...legacyProducts];
 
 export const siteUrl = "https://www.rihlaglobal.com";
