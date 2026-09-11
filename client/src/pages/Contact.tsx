@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearch, useLocation } from "wouter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -59,6 +59,7 @@ export default function Contact() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formStartedAt = useRef(Date.now());
 
   const params = new URLSearchParams(search);
   const productParam = params.get("product");
@@ -91,6 +92,7 @@ export default function Contact() {
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
 
   const onSubmit = async (data: Enquiry) => {
+    if (Date.now() - formStartedAt.current < 3000) return;
     setIsSubmitting(true);
     try {
       const response = await fetch(WEB3FORMS_ENDPOINT, {
@@ -157,6 +159,8 @@ export default function Contact() {
                       onSubmit={form.handleSubmit(onSubmit)}
                       className="space-y-6"
                     >
+                      <label className="sr-only" htmlFor="website">Website</label>
+                      <input id="website" name="website" tabIndex={-1} autoComplete="off" className="absolute -left-[9999px]" aria-hidden="true" />
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField
                           control={form.control}
