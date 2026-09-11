@@ -3,13 +3,12 @@ import { Link, useLocation } from "wouter";
 import { Menu, X, MessageCircle, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { companyInfo } from "@shared/schema";
-import logoImage from "@assets/WhatsApp_Image_2025-11-17_at_21.51.48_1765898801817.jpeg";
 
 const navLinks = [
   { href: "/products", label: "Coffees", external: false },
   { href: "/about", label: "Our approach", external: false },
   { href: "/export-process", label: "Export process", external: false },
-  { href: "/certifications/", label: "Certifications", external: true },
+  { href: "/certifications", label: "Certifications", external: false },
   { href: "/blog", label: "Insights", external: false },
   { href: "/contact", label: "Contact", external: false },
 ];
@@ -27,7 +26,7 @@ export function Header() {
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${isScrolled ? "border-b border-primary/10 bg-background/90 shadow-sm backdrop-blur-xl" : "bg-transparent"}`}>
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
         <Link href="/" className="group flex items-center gap-3" data-testid="link-home-logo">
-          <img src={logoImage} alt="Rihla Global" width="48" height="48" className="size-11 rounded-full object-cover ring-1 ring-accent/60" />
+          <img src="/logo.jpeg" alt="Rihla Global" width="48" height="48" className="size-11 rounded-full object-cover ring-1 ring-accent/60" />
           <span className={`font-serif text-xl tracking-tight ${isScrolled ? "text-foreground" : "text-white"}`}>Rihla <span className="text-accent">Global</span></span>
         </Link>
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
