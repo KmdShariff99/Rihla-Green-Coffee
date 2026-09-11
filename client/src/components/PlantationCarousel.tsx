@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import plantationImage from "@assets/stock_images/coffee_plantation_la_7f8b9a7f.jpg";
-import beansImage from "@assets/stock_images/green_coffee_beans_r_0332a1f5.jpg";
-
 const slides = [
   { src: "/images/coffee-cherries.jpg", alt: "Ripe and green coffee cherries growing on a plantation branch", label: "The cherry stage" },
-  { src: plantationImage, alt: "Coffee plantation landscape in India", label: "Indian origin" },
-  { src: beansImage, alt: "Green coffee beans prepared for export", label: "Export-ready green coffee" },
+  { src: "/images/coffee-plantation.jpg", alt: "Coffee plantation landscape in India", label: "Indian origin" },
+  { src: "/images/green-coffee-beans.jpg", alt: "Green coffee beans prepared for export", label: "Export-ready green coffee" },
 ];
 
 export function PlantationCarousel() {

@@ -9,7 +9,7 @@ const nextConfig = {
     return config;
   },
   transpilePackages: ["@/client"],
-  images: { formats: ["image/avif", "image/webp"] },
+  images: { formats: ["image/avif", "image/webp"], remotePatterns: [{ protocol: "https", hostname: "www.rihlaglobal.com" }] },
   async redirects() {
     return [
       { source: "/certifications/index.html", destination: "/certifications/", permanent: true },
