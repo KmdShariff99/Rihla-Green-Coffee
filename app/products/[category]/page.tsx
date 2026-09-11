@@ -1,0 +1,8 @@
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { categories } from "@/lib/products";
+import { GradeTabs } from "@/components/GradeTabs";
+import { CategoryJsonLd } from "@/components/JsonLd";
+export function generateStaticParams(){return categories.map(c=>({category:c.slug}))}
+export async function generateMetadata({params}:{params:Promise<{category:string}>}):Promise<Metadata>{const {category}=await params,c=categories.find(x=>x.slug===category);if(!c)return{};return{title:`${c.title} Green Coffee`,description:c.seo,alternates:{canonical:`/products/${c.slug}`},openGraph:{title:`${c.title} Green Coffee | Rihla Global`,description:c.seo},twitter:{card:"summary_large_image",title:`${c.title} Green Coffee | Rihla Global`,description:c.seo}}}
+export default async function ProductPage({params}:{params:Promise<{category:string}>}){const {category}=await params,c=categories.find(x=>x.slug===category);if(!c)notFound();return <main id="main"><section className="page-hero"><img src={c.slug==="robusta"?"/images/beans.jpg":"/images/origin.jpg"} alt={`${c.title} green coffee`}/><div className="page-hero-content"><p className="kicker">Indian green coffee / {c.eyebrow}</p><h1>{c.title}</h1><p>{c.description}</p></div></section><section className="section"><GradeTabs category={c}/></section><CategoryJsonLd category={c}/></main>}
